@@ -73,8 +73,6 @@ CREATE TABLE IF NOT EXISTS `mydb`.`recipe` (
   `won_contest` TINYINT NULL DEFAULT NULL,
   `selected_for_context` TINYINT NULL DEFAULT NULL,
   PRIMARY KEY (`id`, `user_id`, `session_id`),
-  INDEX `fk_recipe_user1_idx` (`user_id` ASC) VISIBLE,
-  INDEX `fk_recipe_session1_idx` (`session_id` ASC) VISIBLE,
   CONSTRAINT `fk_recipe_session1`
     FOREIGN KEY (`session_id`)
     REFERENCES `mydb`.`session` (`id`),
@@ -93,7 +91,6 @@ CREATE TABLE IF NOT EXISTS `mydb`.`mix_wine` (
   `wine_id` INT NOT NULL,
   `percent_wine` INT NULL DEFAULT NULL,
   PRIMARY KEY (`recipe_id`, `wine_id`),
-  INDEX `fk_mix_wine_wine1_idx` (`wine_id` ASC) VISIBLE,
   CONSTRAINT `fk_mix_recipe_wine2`
     FOREIGN KEY (`wine_id`)
     REFERENCES `mydb`.`wine` (`id`),
@@ -108,13 +105,12 @@ DEFAULT CHARACTER SET = utf8mb3;
 -- Table `mydb`.`note`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`note` (
+ `id`INT NOT NULL AUTO_INCREMENT,
   `wine_id` INT NOT NULL,
   `user_id` INT NOT NULL,
   `session_id` INT NOT NULL,
   `note` INT NOT NULL,
-  PRIMARY KEY (`wine_id`, `user_id`, `session_id`),
-  INDEX `fk_note_user1_idx` (`user_id` ASC) VISIBLE,
-  INDEX `fk_note_session1_idx` (`session_id` ASC) VISIBLE,
+  PRIMARY KEY (`id`),
   CONSTRAINT `fk_note_session1`
     FOREIGN KEY (`session_id`)
     REFERENCES `mydb`.`session` (`id`),
@@ -145,16 +141,12 @@ DEFAULT CHARACTER SET = utf8mb3;
 -- Table `mydb`.`note_has_tag`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`note_has_tag` (
-  `note_wine_id` INT NOT NULL,
-  `note_user_id` INT NOT NULL,
-  `note_session_id` INT NOT NULL,
+  `note_id` INT NOT NULL,
   `tag_id` INT NOT NULL,
-  PRIMARY KEY (`note_wine_id`, `note_user_id`, `note_session_id`, `tag_id`),
-  INDEX `fk_note_has_tag_tag1_idx` (`tag_id` ASC) VISIBLE,
-  INDEX `fk_note_has_tag_note1_idx` (`note_wine_id` ASC, `note_user_id` ASC, `note_session_id` ASC) VISIBLE,
+  PRIMARY KEY (`note_id`, `tag_id`),
   CONSTRAINT `fk_note_has_tag_note1`
-    FOREIGN KEY (`note_wine_id` , `note_user_id` , `note_session_id`)
-    REFERENCES `mydb`.`note` (`wine_id` , `user_id` , `session_id`),
+    FOREIGN KEY (`note_id`)
+    REFERENCES `mydb`.`note` (`id`),
   CONSTRAINT `fk_note_has_tag_tag1`
     FOREIGN KEY (`tag_id`)
     REFERENCES `mydb`.`tag` (`id`))
@@ -169,8 +161,6 @@ CREATE TABLE IF NOT EXISTS `mydb`.`session_has_user` (
   `user_id` INT NOT NULL,
   `session_id` INT NOT NULL,
   PRIMARY KEY (`user_id`, `session_id`),
-  INDEX `fk_user_has_session_session1_idx` (`session_id` ASC) VISIBLE,
-  INDEX `fk_user_has_session_user1_idx` (`user_id` ASC) VISIBLE,
   CONSTRAINT `fk_user_has_session_session1`
     FOREIGN KEY (`session_id`)
     REFERENCES `mydb`.`session` (`id`),
@@ -188,7 +178,6 @@ CREATE TABLE IF NOT EXISTS `mydb`.`session_has_wine` (
   `wine_id` INT NOT NULL,
   `session_id` INT NOT NULL,
   PRIMARY KEY (`wine_id`, `session_id`),
-  INDEX `fk_session_has_wine_session1_idx` (`session_id` ASC) VISIBLE,
   CONSTRAINT `fk_session`
     FOREIGN KEY (`session_id`)
     REFERENCES `mydb`.`session` (`id`),
@@ -207,7 +196,6 @@ CREATE TABLE IF NOT EXISTS `mydb`.`user_has_tag` (
   `tag_id` INT NOT NULL,
   `comment` TEXT NULL DEFAULT NULL,
   PRIMARY KEY (`user_id`, `tag_id`),
-  INDEX `fk_user_has_tag_tag1_idx` (`tag_id` ASC) VISIBLE,
   CONSTRAINT `fk_user_has_tag_tag1`
     FOREIGN KEY (`tag_id`)
     REFERENCES `mydb`.`tag` (`id`),
@@ -218,6 +206,4 @@ ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb3;
 
 
-SET SQL_MODE=@OLD_SQL_MODE;
-SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
-SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
