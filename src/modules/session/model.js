@@ -6,4 +6,12 @@ const findAll = () => {
   });
 };
 
-module.exports = { findAll };
+const findById = (id) => {
+  return db
+    .execute("SELECT * FROM session WHERE id = ? ", [id])
+    .then(([data]) => {
+      return data;
+    });
+};
+
+module.exports = { findAll, findById };
