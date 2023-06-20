@@ -14,4 +14,12 @@ const findById = (id) => {
     });
 };
 
-module.exports = { findAll, findById };
+const findWineBySessionId = (id) => {
+    return db
+      .execute('SELECT * FROM session_has_wine JOIN session ON session.id = session_has_wine.session_id WHERE session_id = ?', [id])
+      .then(([data]) => {
+        return data;
+      });
+  };
+
+module.exports = { findAll, findById, findWineBySessionId };

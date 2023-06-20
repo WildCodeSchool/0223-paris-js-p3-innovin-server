@@ -1,4 +1,4 @@
-const { findAll, findById } = require("./model");
+const { findAll, findById, findWineBySessionId } = require("./model");
 
 const getAll = ({ req, res }) => {
   findAll()
@@ -19,4 +19,15 @@ const getById = (req, res) => {
     .catch((err) => console.error(err));
 };
 
-module.exports = { getAll, getById };
+const getWineBySessionId = (req, res) => {
+  const { id } = req.params;
+  findWineBySessionId(id)
+    .then((wines) => {
+      res.status(200).json(wines);
+    })
+    .catch(() => {
+      res.status(500).json("erreur serveur");
+    });
+};
+
+module.exports = { getAll, getById, getWineBySessionId };
