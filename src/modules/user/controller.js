@@ -1,7 +1,14 @@
 const argon = require("argon2");
 const jwt = require("jsonwebtoken");
 
-const { findAll, findById, insert, findByMail } = require("./model");
+const {
+  findAll,
+  findById,
+  insert,
+  findByMail,
+  updateOne,
+  deleteOne,
+} = require("./model");
 
 const getAll = ({ req, res }) => {
   findAll()
@@ -90,4 +97,41 @@ const logout = (req, res) => {
   return res.clearCookie("access_token").sendStatus(200);
 };
 
-module.exports = { getAll, getById, register, login, logout };
+const updateUser = (req, res) => {
+  const { id } = req.params;
+  const user = req.body;
+  updateOne(user, id)
+    .then((user) => {
+      if (user.affectedRows === 1) {
+        res.status(204).json({ id, ...user });
+      } else {
+        res.status(404).json("No user found with this ID");
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).json("error server");
+    });
+};
+
+const deleteUser = (req, res) => {
+  const { id } = req.params;
+  deleteOne(id)
+    .then((result) => {
+      res.sendStatus(204).json(result);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json("error server");
+    });
+};
+
+module.exports = {
+  getAll,
+  getById,
+  register,
+  login,
+  logout,
+  updateUser,
+  deleteUser,
+};
