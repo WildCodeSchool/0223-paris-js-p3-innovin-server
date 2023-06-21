@@ -2,6 +2,8 @@ require("dotenv").config();
 const app = require("./config/server");
 const pool = require("./config/db-config");
 
+
+
 pool.getConnection().then(()=> {
   console.log("database connected");
   app.listen(process.env.APP_PORT, (err) => {
