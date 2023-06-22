@@ -28,6 +28,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`wine` (
   `domain` VARCHAR(100) NOT NULL,
   `region` VARCHAR(100) NOT NULL,
   `cepage` VARCHAR(45) NOT NULL,
+  `image` VARCHAR(255) NOT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb3;
@@ -59,6 +60,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`user` (
   `password` VARCHAR(255) NOT NULL,
   `age` INT NOT NULL,
   `role` enum('ROLE_ADMIN','ROLE_USER') NOT NULL DEFAULT 'ROLE_USER',
+  `comment` TEXT NULL DEFAULT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb3;
@@ -195,7 +197,6 @@ DEFAULT CHARACTER SET = utf8mb3;
 CREATE TABLE IF NOT EXISTS `mydb`.`user_has_tag` (
   `user_id` INT NOT NULL,
   `tag_id` INT NOT NULL,
-  `comment` TEXT NULL DEFAULT NULL,
   PRIMARY KEY (`user_id`, `tag_id`),
   CONSTRAINT `fk_user_has_tag_tag1`
     FOREIGN KEY (`tag_id`)
@@ -206,5 +207,21 @@ CREATE TABLE IF NOT EXISTS `mydb`.`user_has_tag` (
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb3;
 
+
+-- -----------------------------------------------------
+-- Table `mydb`.`user_has_favorite`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb`.`user_has_favorite` (
+  `user_id` INT NOT NULL,
+  `wine_id` INT NOT NULL,
+  PRIMARY KEY (`user_id`, `wine_id`),
+  CONSTRAINT `fk_user_has_favorite_wine`
+    FOREIGN KEY (`wine_id`)
+    REFERENCES `mydb`.`wine` (`id`),
+  CONSTRAINT `fk_user_has_favorite_user`
+    FOREIGN KEY (`user_id`)
+    REFERENCES `mydb`.`user` (`id`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb3;
 
 
