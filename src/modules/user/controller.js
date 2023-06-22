@@ -98,7 +98,7 @@ const logout = (req, res) => {
 };
 
 const updateUser = (req, res) => {
-  const { id } = req.params;
+  const id = req.userId;
   const user = req.body;
   updateOne(user, id)
     .then((user) => {

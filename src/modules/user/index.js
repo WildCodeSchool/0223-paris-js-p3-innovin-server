@@ -21,7 +21,7 @@ router.get("/:id", getById);
 router.post("/register", hashPassword, register);
 router.post("/login", login);
 
-router.put("/:id", updateUser);
-router.delete("/:id", deleteUser);
+router.put("/:id", authenticate, updateUser);
+router.delete("/:id", authenticate, isAdmin, deleteUser);
 
 module.exports = router;
