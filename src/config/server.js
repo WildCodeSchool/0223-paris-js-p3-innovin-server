@@ -22,6 +22,6 @@ app.use("/sessions", session_rooter);
 app.use("/tags", tag_rooter);
 app.use("/users", user_rooter);
 app.use("/wines", wine_rooter);
-app.use("/localisations", location_rooter);
+app.use("/locations", location_rooter);
 
 module.exports = app;
