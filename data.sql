@@ -15,12 +15,12 @@ INSERT INTO mydb.`user` (firstname,lastname,email,password,age,`role`,comment) V
 	 ('Thomas','Te','burata@gmail.com','$argon2id$v=19$m=65536,t=3,p=4$8iGCr2Bkx5pnsMzSkG3o8w$elbVXhunIGEVS8XewsCy/SvFce7zDxxbq14fLkMZpo0',28,'ROLE_USER',NULL);
 
 
-INSERT INTO mydb.`session` (category,`date`,price,max_participants,localisation_id) VALUES
+INSERT INTO mydb.`session` (category,`date`,price,max_participants,location_id) VALUES
 	 ('Dégustation','2023-09-19 00:00:00',40,10,1),
 	 ('Création','2023-08-08 00:00:00',70,10,2);
 
 
-INSERT INTO mydb.`localisation` (place_name,lat,lng) VALUES
+INSERT INTO mydb.`location` (place_name,lat,lng) VALUES
 	 ('La Cascade du Déroc',44.646191513576305,3.0704151738928127),
 	 ('La Tour d''Apcher',44.81673108072775,3.3219272477633583),
 	 ('Le Château de la Baume',44.64956676177372,3.193426100821216),
