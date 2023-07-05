@@ -1,7 +1,16 @@
 const argon = require("argon2");
 const jwt = require("jsonwebtoken");
 
-const { findAll, findById, insert, findByMail, updateOne, updateOneComment, deleteOne } = require("./model");
+const {
+  findAll,
+  findById,
+  insert,
+  findByMail,
+  updateOne,
+  updateOneComment,
+  deleteOne,
+  findCurrent,
+} = require("./model");
 
 const getAll = ({ req, res }) => {
   findAll()
@@ -18,6 +27,16 @@ const getById = (req, res) => {
       !user ? res.status(400).json("ressource with the specified id does not exist") : res.status(200).json(user);
     })
     .catch((err) => console.error(err));
+};
+
+const getCurrentUser = async (req, res, next) => {
+  try {
+    const [user] = await findCurrent(req.userId);
+    res.status(200).json(user);
+  } catch (err) {
+    console.error(err);
+    res.status(400).json("ressource with the specified id does not exist");
+  }
 };
 
 const register = async (req, res) => {
@@ -42,7 +61,7 @@ const login = async (req, res) => {
   const { email, password } = req.body;
 
   if (!email || !password) {
-    res.status(400).send({ error: "Please specify both email and password" });
+    return res.status(400).send({ error: "Please specify both email and password" });
   }
 
   try {
@@ -137,4 +156,5 @@ module.exports = {
   updateUser,
   updateComment,
   deleteUser,
+  getCurrentUser,
 };

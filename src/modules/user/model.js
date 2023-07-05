@@ -17,6 +17,14 @@ const findById = (id) => {
     });
 };
 
+const findCurrent = (id) => {
+  return db
+    .execute("SELECT id, email, firstname, lastname, age, role FROM user WHERE user.id = ? ", [id])
+    .then(([data]) => {
+      return data;
+    });
+};
+
 const insert = (user) => {
   const { firstname, lastname, email, password, age } = user;
   return db.execute(`insert into user (firstname, lastname, email, password, age) values (?, ?, ?, ?, ?)`, [
@@ -54,4 +62,5 @@ module.exports = {
   updateOne,
   updateOneComment,
   deleteOne,
+  findCurrent,
 };
