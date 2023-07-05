@@ -24,7 +24,9 @@ const getById = (req, res) => {
   const { id } = req.params;
   findById(id)
     .then(([user]) => {
-      !user ? res.status(400).json("ressource with the specified id does not exist") : res.status(200).json(user);
+      !user
+        ? res.status(400).json("ressource with the specified id does not exist")
+        : res.status(200).json(user);
     })
     .catch((err) => console.error(err));
 };
@@ -48,7 +50,9 @@ const register = async (req, res) => {
 
   try {
     const result = await insert({ firstname, lastname, email, password, age });
-    res.status(201).json({ id: result.insertId, firstname, lastname, email, age });
+    res
+      .status(201)
+      .json({ id: result.insertId, firstname, lastname, email, age });
   } catch (err) {
     console.error(err);
     res.status(500).send({
@@ -61,7 +65,9 @@ const login = async (req, res) => {
   const { email, password } = req.body;
 
   if (!email || !password) {
-    return res.status(400).send({ error: "Please specify both email and password" });
+    return res
+      .status(400)
+      .send({ error: "Please specify both email and password" });
   }
 
   try {
@@ -71,9 +77,13 @@ const login = async (req, res) => {
     } else {
       const { id, email, password: hash, role } = user;
       if (await argon.verify(hash, password)) {
-        const token = jwt.sign({ id: id, role: role }, process.env.JWT_AUTH_SECRET, {
-          expiresIn: "1h",
-        });
+        const token = jwt.sign(
+          { id: id, role: role },
+          process.env.JWT_AUTH_SECRET,
+          {
+            expiresIn: "6h",
+          }
+        );
         res
           .cookie("access_token", token, {
             httpOnly: true,
