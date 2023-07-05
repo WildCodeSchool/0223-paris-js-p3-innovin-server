@@ -15,9 +15,23 @@ INSERT INTO mydb.`user` (firstname,lastname,email,password,age,`role`,comment) V
 	 ('Thomas','Te','burata@gmail.com','$argon2id$v=19$m=65536,t=3,p=4$8iGCr2Bkx5pnsMzSkG3o8w$elbVXhunIGEVS8XewsCy/SvFce7zDxxbq14fLkMZpo0',28,'ROLE_USER',NULL);
 
 
-INSERT INTO mydb.`session` (category,`date`,location,price,max_participants) VALUES
-	 ('Dégustation','2023-09-19 00:00:00','La Cascade',40,10),
-	 ('Création','2023-08-08 00:00:00','La Grotte',70,10);
+INSERT INTO mydb.`session` (category,`date`,price,max_participants,localisation_id) VALUES
+	 ('Dégustation','2023-09-19 00:00:00',40,10,1),
+	 ('Création','2023-08-08 00:00:00',70,10,2);
+
+
+INSERT INTO mydb.`localisation` (place_name,lat,lng) VALUES
+	 ('La Cascade du Déroc',44.646191513576305,3.0704151738928127),
+	 ('La Tour d''Apcher',44.81673108072775,3.3219272477633583),
+	 ('Le Château de la Baume',44.64956676177372,3.193426100821216),
+	 ('Sainte-Enimie',44.36468812708561,3.414404149425728),
+	 ('Le Dolmen de Changefège',44.497002049067675,3.444169736391266),
+	 ('La Cathédrale Notre-Dame de Mende',44.51728207130067,3.4979553871683047),
+	 ('La Ferme Caussenarde',44.218005074584966,3.3241669338068474),
+	 ('La Garde Guérin',44.47762874611424,3.9347045103730727),
+	 ('La Cascade de Runes',44.379286049543545,3.6746024382808313),
+	 ('Le Mont Lozère',44.425732587922674,3.7390425937705656);
+
 
 INSERT INTO mydb.session_has_user (user_id,session_id) VALUES
 	 (1,1),
