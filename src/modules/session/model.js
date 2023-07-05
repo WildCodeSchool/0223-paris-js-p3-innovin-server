@@ -1,9 +1,13 @@
 const db = require("../../config/db-config");
 
 const findAll = () => {
-  return db.execute("SELECT * FROM session").then((data) => {
-    return data;
-  });
+  return db
+    .execute(
+      "SELECT category, date, session.id, location, max_participants, COUNT(user_id) AS participants FROM session JOIN session_has_user ON session.id = session_has_user.session_id GROUP BY session.id"
+    )
+    .then((data) => {
+      return data;
+    });
 };
 
 const findById = (id) => {
