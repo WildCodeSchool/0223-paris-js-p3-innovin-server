@@ -17,6 +17,7 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,N
 CREATE SCHEMA IF NOT EXISTS `mydb` DEFAULT CHARACTER SET utf8mb3 ;
 USE `mydb` ;
 
+
 -- -----------------------------------------------------
 -- Table `mydb`.`wine`
 -- -----------------------------------------------------
@@ -33,20 +34,18 @@ CREATE TABLE IF NOT EXISTS `mydb`.`wine` (
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb3;
 
-
 -- -----------------------------------------------------
--- Table `mydb`.`session`
+-- Table `mydb`.`location`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`session` (
+CREATE TABLE IF NOT EXISTS `mydb`.`location` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `category` VARCHAR(100) NOT NULL,
-  `date` DATETIME NOT NULL,
-  `location` VARCHAR(100) NOT NULL,
-  `price` DECIMAL(10,0) NOT NULL,
-  `max_participants` INT NOT NULL,
+  `place_name` VARCHAR(200) NOT NULL,
+  `lat` FLOAT NOT NULL,
+  `lng` FLOAT NOT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb3;
+
 
 
 -- -----------------------------------------------------
@@ -64,6 +63,25 @@ CREATE TABLE IF NOT EXISTS `mydb`.`user` (
   PRIMARY KEY (`id`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb3;
+
+-- -----------------------------------------------------
+-- Table `mydb`.`session`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb`.`session` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `category` VARCHAR(100) NOT NULL,
+  `date` DATETIME NOT NULL,
+  `price` DECIMAL(10,0) NOT NULL,
+  `max_participants` INT NOT NULL,
+  `location_id` INT NOT NULL,
+  PRIMARY KEY (`id`),
+   CONSTRAINT `fk_session_location1`
+    FOREIGN KEY (`location_id`)
+    REFERENCES `mydb`.`location` (`id`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb3;
+
+
 
 
 -- -----------------------------------------------------
