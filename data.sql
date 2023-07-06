@@ -6,21 +6,58 @@ INSERT INTO mydb.wine (name,color,manufacture_year,`domain`,region,cepage,image)
 	 ('Le larmes de la terre','Blanc','1920','Domaine de la Motte','Alsace','Pinot blanc','image coole encore plus');
 
 
-
 INSERT INTO mydb.`user` (firstname,lastname,email,password,age,`role`,comment) VALUES
-	 ('Celia','Golden','princess@gmail.com','$argon2id$v=19$m=65536,t=3,p=4$oKINUTSPrDaQKKNBnI3xuA$wz0ebKYpLsWWWYOUuw58jmrXKl7lMmlJGYHhNqZTJMM',21,'ROLE_USER',NULL),
-	 ('Saverio','Platinium','mammamia@gmail.com','$argon2id$v=19$m=65536,t=3,p=4$0kcgVUGnvv+FiSkqoWY1fg$3h3mUp4tjJJJmgPL57vjHIlN7wAOJcihSyjHHp4eICg',28,'ROLE_USER',NULL),
-	 ('JM','Guirlande','triforce@hyrule.com','$argon2id$v=19$m=65536,t=3,p=4$jFoy3cUueXp0P/8huFOoVw$dN6Zk+sfhZTEPwiB8BiSx4OTAwVYEQ7jYhnfyw95xlU',23,'ROLE_USER',NULL),
-	 ('Tom','Nana','adress@gmail.com','$argon2id$v=19$m=65536,t=3,p=4$t67zhRKcXGLqJ3p9KO5f5Q$q4RFIN4d02J76sr6HWh/bXmIjryzO6M7qLvLyxkANn8',23,'ROLE_USER',NULL),
-	 ('Thomas','Te','burata@gmail.com','$argon2id$v=19$m=65536,t=3,p=4$8iGCr2Bkx5pnsMzSkG3o8w$elbVXhunIGEVS8XewsCy/SvFce7zDxxbq14fLkMZpo0',28,'ROLE_USER',NULL);
+     ('Celia','Golden','ceci.brams@gmail.com','$argon2id$v=19$m=65536,t=3,p=4$oKINUTSPrDaQKKNBnI3xuA$wz0ebKYpLsWWWYOUuw58jmrXKl7lMmlJGYHhNqZTJMM',21,'ROLE_USER',NULL),
+     ('Saverio','Platinium','save.cutolo@gmail.com','$argon2id$v=19$m=65536,t=3,p=4$0kcgVUGnvv+FiSkqoWY1fg$3h3mUp4tjJJJmgPL57vjHIlN7wAOJcihSyjHHp4eICg',28,'ROLE_USER',NULL),
+     ('JM','Guirlande','millet.jm@live.com','$argon2id$v=19$m=65536,t=3,p=4$jFoy3cUueXp0P/8huFOoVw$dN6Zk+sfhZTEPwiB8BiSx4OTAwVYEQ7jYhnfyw95xlU',23,'ROLE_USER',NULL),
+     ('Tom','Nana','lelaurain.tom@gmail.com','$argon2id$v=19$m=65536,t=3,p=4$t67zhRKcXGLqJ3p9KO5f5Q$q4RFIN4d02J76sr6HWh/bXmIjryzO6M7qLvLyxkANn8',23,'ROLE_USER',NULL),
+     ('Thomas','Te','lonjon.thomas@gmail.com','$argon2id$v=19$m=65536,t=3,p=4$8iGCr2Bkx5pnsMzSkG3o8w$elbVXhunIGEVS8XewsCy/SvFce7zDxxbq14fLkMZpo0',28,'ROLE_USER',NULL);
 
 
-INSERT INTO mydb.`session` (category,`date`,price,max_participants,localisation_id) VALUES
-	 ('Dégustation','2023-09-19 00:00:00',40,10,1),
-	 ('Création','2023-08-08 00:00:00',70,10,2);
+INSERT INTO mydb.`session` (category,`date`,price,max_participants,location_id) VALUES
+	 ('Dégustation','2023-08-01 16:00:00',40,10,3),
+	 ('Dégustation','2023-08-03 16:00:00',40,10,5),
+	 ('Dégustation','2023-08-05 14:00:00',40,10,5),
+	 ('Dégustation','2023-08-17 16:00:00',40,10,5),
+	 ('Dégustation','2023-08-19 16:00:00',40,10,7),
+	 ('Dégustation','2023-08-21 20:00:00',40,10,8),
+	 ('Dégustation','2023-08-23 20:00:00',40,10,9),
+	 ('Dégustation','2023-08-25 20:00:00',40,10,5),
+	 ('Dégustation','2023-08-27 16:00:00',40,10,9),
+	 ('Dégustation','2023-08-29 20:00:00',40,10,3),
+	 ('Dégustation','2023-08-31 16:00:00',40,10,7),
+	 ('Dégustation','2023-09-01 20:00:00',40,10,2),
+	 ('Dégustation','2023-09-03 16:00:00',40,10,5),
+	 ('Dégustation','2023-09-05 20:00:00',40,10,4),
+	 ('Dégustation','2023-09-07 16:00:00',40,10,3),
+	 ('Dégustation','2023-09-09 20:00:00',40,10,2),
+	 ('Dégustation','2023-09-11 16:00:00',40,10,1),
+	 ('Dégustation','2023-09-13 20:00:00',40,10,1),
+     ('Dégustation','2023-09-17 20:00:00',40,10,3),
+     ('Dégustation','2023-09-19 16:00:00',40,10,1),
+	 ('Création','2023-08-02 20:00:00',70,10,2),
+	 ('Création','2023-08-04 16:00:00',70,10,2),
+	 ('Création','2023-08-06 16:00:00',70,10,2),
+	 ('Création','2023-08-08 16:00:00',70,10,4),
+	 ('Création','2023-08-10 20:00:00',70,10,10),
+	 ('Création','2023-08-12 14:00:00',70,10,6),
+	 ('Création','2023-08-14 16:00:00',70,10,7),
+	 ('Création','2023-08-16 20:00:00',70,10,8),
+	 ('Création','2023-08-18 20:00:00',70,10,9),
+	 ('Création','2023-08-20 17:00:00',70,10,10),
+	 ('Création','2023-08-22 16:00:00',70,10,9),
+	 ('Création','2023-08-24 20:00:00',70,10,8),
+	 ('Création','2023-08-26 14:00:00',70,10,10),
+	 ('Création','2023-08-28 14:00:00',70,10,6),
+	 ('Création','2023-08-30 16:00:00',70,10,6),
+	 ('Création','2023-09-02 20:00:00',70,10,4),
+	 ('Création','2023-09-04 16:00:00',70,10,3),
+	 ('Création','2023-09-06 20:00:00',70,10,2),
+	 ('Création','2023-09-08 20:00:00',70,10,6),
+	 ('Création','2023-09-10 20:00:00',70,10,2);
 
 
-INSERT INTO mydb.`localisation` (place_name,lat,lng) VALUES
+INSERT INTO mydb.`location` (place_name,lat,lng) VALUES
 	 ('La Cascade du Déroc',44.646191513576305,3.0704151738928127),
 	 ('La Tour d''Apcher',44.81673108072775,3.3219272477633583),
 	 ('Le Château de la Baume',44.64956676177372,3.193426100821216),

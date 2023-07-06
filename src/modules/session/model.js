@@ -1,17 +1,15 @@
 const db = require("../../config/db-config");
 
 const findAll = () => {
-  return db.execute("SELECT * FROM session").then((data) => {
+  return db.execute("SELECT * FROM session JOIN location ON session.location_id=location.id").then((data) => {
     return data;
   });
 };
 
 const findById = (id) => {
-  return db
-    .execute("SELECT * FROM session WHERE id = ? ", [id])
-    .then(([data]) => {
-      return data;
-    });
+  return db.execute("SELECT * FROM session WHERE id = ? ", [id]).then(([data]) => {
+    return data;
+  });
 };
 
 const findWineBySessionId = (id) => {

@@ -35,9 +35,9 @@ ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb3;
 
 -- -----------------------------------------------------
--- Table `mydb`.`localisation`
+-- Table `mydb`.`location`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`localisation` (
+CREATE TABLE IF NOT EXISTS `mydb`.`location` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `place_name` VARCHAR(200) NOT NULL,
   `lat` FLOAT NOT NULL,
@@ -73,11 +73,11 @@ CREATE TABLE IF NOT EXISTS `mydb`.`session` (
   `date` DATETIME NOT NULL,
   `price` DECIMAL(10,0) NOT NULL,
   `max_participants` INT NOT NULL,
-  `localisation_id` INT NOT NULL,
+  `location_id` INT NOT NULL,
   PRIMARY KEY (`id`),
-   CONSTRAINT `fk_session_localisation1`
-    FOREIGN KEY (`localisation_id`)
-    REFERENCES `mydb`.`localisation` (`id`))
+   CONSTRAINT `fk_session_location1`
+    FOREIGN KEY (`location_id`)
+    REFERENCES `mydb`.`location` (`id`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb3;
 
