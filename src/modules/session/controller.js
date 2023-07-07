@@ -60,8 +60,6 @@ const postNewSession = async (req, res) => {
 };
 const deleteSession = async (req, res) => {
   const { id } = req.params;
-  console.log("controller", req.params);
-  console.log("controller", id);
   try {
     await deleteSessionById(id);
     res.sendStatus(204);

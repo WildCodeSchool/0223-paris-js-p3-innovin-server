@@ -58,7 +58,6 @@ const createNewSession = (session) => {
 };
 
 const deleteSessionById = (id) => {
-  console.log("model", id);
   return db.execute("DELETE FROM session WHERE id = ?", [id]);
 };
 
