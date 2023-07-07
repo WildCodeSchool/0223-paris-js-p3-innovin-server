@@ -1,25 +1,30 @@
 const db = require("../../config/db-config");
 
 const findAll = () => {
-  return db.execute("SELECT * from session JOIN location ON session.location_id=location.id").then((data) => {
-    return data;
-  });
+  return db
+    .execute(
+      "SELECT * from session JOIN location ON session.location_id=location.id"
+    )
+    .then((data) => {
+      return data;
+    });
 };
 const findAllWithNumberOfParticipants = () => {
   return db
     .execute(
-      "SELECT category, date, session.id, location, max_participants, COUNT(user_id) AS participants FROM session LEFT JOIN session_has_user ON session.id = session_has_user.session_id GROUP BY session.id"
+      "SELECT category, date, session.id, place_name, max_participants, COUNT(user_id) AS participants FROM session LEFT JOIN session_has_user ON session.id = session_has_user.session_id JOIN location on location.id = session.location_id GROUP BY session.id"
     )
     .then((data) => {
       return data;
     });
 };
 
-
 const findById = (id) => {
-  return db.execute("SELECT * FROM session WHERE id = ? ", [id]).then(([data]) => {
-    return data;
-  });
+  return db
+    .execute("SELECT * FROM session WHERE id = ? ", [id])
+    .then(([data]) => {
+      return data;
+    });
 };
 
 const findWineBySessionId = (id) => {
