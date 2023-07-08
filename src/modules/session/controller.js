@@ -1,9 +1,4 @@
-const {
-  findAll,
-  findById,
-  findWineBySessionId,
-  findUserBySessionId,
-} = require("./model");
+const { findAll, findById, findWineBySessionId, findUserBySessionId, registerSession } = require("./model");
 
 const getAll = ({ req, res }) => {
   findAll()
@@ -17,9 +12,7 @@ const getById = (req, res) => {
   const { id } = req.params;
   findById(id)
     .then(([session]) => {
-      !session
-        ? res.status(400).json("ressource with the specified id do not exist")
-        : res.status(200).json(session);
+      !session ? res.status(400).json("ressource with the specified id do not exist") : res.status(200).json(session);
     })
     .catch((err) => console.error(err));
 };
@@ -46,4 +39,21 @@ const getUserBySessionId = (req, res) => {
     });
 };
 
-module.exports = { getAll, getById, getWineBySessionId, getUserBySessionId };
+const addRegistration = (req, res) => {
+  const user_id = req.userId;
+  const session_id = req.params;
+  registerSession(user_id, session_id)
+    .then((comment) => {
+      if (comment.affectedRows === 1) {
+        res.status(204).json({ comment });
+      } else {
+        res.status(404).json("No user found with this ID");
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).json("error server");
+    });
+};
+
+module.exports = { getAll, getById, getWineBySessionId, getUserBySessionId, addRegistration };

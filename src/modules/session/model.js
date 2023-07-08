@@ -1,9 +1,11 @@
 const db = require("../../config/db-config");
 
 const findAll = () => {
-  return db.execute("SELECT * FROM session JOIN location ON session.location_id=location.id").then((data) => {
-    return data;
-  });
+  return db
+    .execute("SELECT *, session.id FROM session JOIN location ON session.location_id=location.id")
+    .then((data) => {
+      return data;
+    });
 };
 
 const findById = (id) => {
@@ -34,9 +36,14 @@ const findUserBySessionId = (id) => {
     });
 };
 
+const registerSession = (user_id, session_id) => {
+  return db.execute(`INSERT INTO session_has_user (user_id, session_id) VALUES (?,?)`, [user_id, session_id]);
+};
+
 module.exports = {
   findAll,
   findById,
   findWineBySessionId,
   findUserBySessionId,
+  registerSession,
 };
