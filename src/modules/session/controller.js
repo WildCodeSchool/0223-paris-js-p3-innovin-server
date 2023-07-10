@@ -41,7 +41,7 @@ const getUserBySessionId = (req, res) => {
 
 const addRegistration = (req, res) => {
   const user_id = req.userId;
-  const session_id = req.params;
+  const session_id = req.params.id;
   registerSession(user_id, session_id)
     .then((comment) => {
       if (comment.affectedRows === 1) {
