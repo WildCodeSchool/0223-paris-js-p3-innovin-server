@@ -1,4 +1,21 @@
-const { findAll, findById, findWineBySessionId, findUserBySessionId, registerSession } = require("./model");
+const {
+  findAll,
+  findById,
+  findWineBySessionId,
+  findUserBySessionId,
+  registerSession,
+  createNewSession,
+  findAllWithNumberOfParticipants,
+  deleteSessionById,
+} = require("./model");
+
+const getAllWithNumberOfParticipants = ({ req, res }) => {
+  findAllWithNumberOfParticipants()
+    .then(([sessions]) => {
+      res.status(200).json(sessions);
+    })
+    .catch((err) => console.error(err));
+};
 
 const getAll = ({ req, res }) => {
   findAll()
@@ -56,4 +73,32 @@ const addRegistration = (req, res) => {
     });
 };
 
-module.exports = { getAll, getById, getWineBySessionId, getUserBySessionId, addRegistration };
+const postNewSession = async (req, res) => {
+  const infos = req.body;
+  try {
+    const newSession = await createNewSession(infos);
+    res.status(200).json(newSession);
+  } catch (error) {
+    res.status(500).json("erreur serveur");
+  }
+};
+const deleteSession = async (req, res) => {
+  const { id } = req.params;
+  try {
+    await deleteSessionById(id);
+    res.sendStatus(204);
+  } catch (error) {
+    res.status(500).json("erreur serveur");
+  }
+};
+
+module.exports = {
+  getAll,
+  getById,
+  getWineBySessionId,
+  getUserBySessionId,
+  postNewSession,
+  deleteSession,
+  addRegistration,
+  getAllWithNumberOfParticipants,
+};

@@ -7,6 +7,15 @@ const findAll = () => {
       return data;
     });
 };
+const findAllWithNumberOfParticipants = () => {
+  return db
+    .execute(
+      "SELECT category, date, session.id, place_name, max_participants, COUNT(user_id) AS participants FROM session LEFT JOIN session_has_user ON session.id = session_has_user.session_id JOIN location on location.id = session.location_id GROUP BY session.id"
+    )
+    .then((data) => {
+      return data;
+    });
+};
 
 const findById = (id) => {
   return db.execute("SELECT * FROM session WHERE id = ? ", [id]).then(([data]) => {
@@ -40,10 +49,28 @@ const registerSession = (user_id, session_id) => {
   return db.execute(`INSERT INTO session_has_user (user_id, session_id) VALUES (?,?)`, [user_id, session_id]);
 };
 
+const createNewSession = (session) => {
+  const { location, price, category, max_participants, date } = session;
+  return db.execute("INSERT INTO session (category, date,location, price, max_participants) VALUES (?, ?, ?, ?, ?)", [
+    category,
+    date,
+    location,
+    price,
+    max_participants,
+  ]);
+};
+
+const deleteSessionById = (id) => {
+  return db.execute("DELETE FROM session WHERE id = ?", [id]);
+};
+
 module.exports = {
   findAll,
   findById,
   findWineBySessionId,
   findUserBySessionId,
   registerSession,
+  createNewSession,
+  findAllWithNumberOfParticipants,
+  deleteSessionById,
 };
