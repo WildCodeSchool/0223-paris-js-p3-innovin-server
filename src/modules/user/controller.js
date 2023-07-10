@@ -149,7 +149,7 @@ const deleteUser = (req, res) => {
   const { id } = req.params;
   deleteOne(id)
     .then((result) => {
-      res.sendStatus(204).json(result);
+      res.status(204).json(result);
     })
     .catch((err) => {
       console.log(err);
