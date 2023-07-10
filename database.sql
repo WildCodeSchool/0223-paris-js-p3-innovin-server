@@ -28,8 +28,10 @@ CREATE TABLE IF NOT EXISTS `mydb`.`wine` (
   `manufacture_year` VARCHAR(45) NOT NULL,
   `domain` VARCHAR(100) NOT NULL,
   `region` VARCHAR(100) NOT NULL,
-  `cepage` VARCHAR(45) NOT NULL,
+  `appellation` VARCHAR(100) NOT NULL,
+  `cepage` VARCHAR(255) NOT NULL,
   `image` VARCHAR(255) NOT NULL,
+  `comment` TEXT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb3;
