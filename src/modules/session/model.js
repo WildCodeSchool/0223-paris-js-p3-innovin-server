@@ -61,6 +61,16 @@ const deleteSessionById = (id) => {
   return db.execute("DELETE FROM session WHERE id = ?", [id]);
 };
 
+findSessionByUserId = (id) => {
+  return db
+    .execute(
+      "SELECT category, date, place_name  from session_has_user JOIN user on user.id = session_has_user.user_id JOIN session on session.id = session_has_user.session_id JOIN location on location.id = session.location_id where user_id = ?",
+      [id]
+    )
+    .then((data) => {
+      return data;
+    });
+};
 module.exports = {
   findAll,
   findById,
@@ -69,4 +79,5 @@ module.exports = {
   createNewSession,
   findAllWithNumberOfParticipants,
   deleteSessionById,
+  findSessionByUserId,
 };
