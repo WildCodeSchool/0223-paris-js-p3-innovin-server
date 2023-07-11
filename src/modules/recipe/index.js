@@ -1,7 +1,10 @@
 const router = require("express").Router();
-const { getAll, getById } = require("./controller");
+const { getAll, getSessionByUserId, getById } = require("./controller");
+const { authenticate } = require("../../middlewares/auth");
+
 
 // router.get("/", getAll);
-// router.get("/:id", getById);
+router.get("/user", authenticate, getSessionByUserId);
+router.get("/:id", authenticate, getById);
 
 module.exports = router;

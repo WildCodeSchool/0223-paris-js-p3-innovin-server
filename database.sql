@@ -44,6 +44,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`location` (
   `place_name` VARCHAR(200) NOT NULL,
   `lat` FLOAT NOT NULL,
   `lng` FLOAT NOT NULL,
+  `image` VARCHAR(255) NULL DEFAULT 'http://localhost:8080/workshops/default.png',
   PRIMARY KEY (`id`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb3;
@@ -95,6 +96,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`recipe` (
   `session_id` INT NOT NULL,
   `won_contest` TINYINT NULL DEFAULT NULL,
   `selected_for_context` TINYINT NULL DEFAULT NULL,
+    `image` VARCHAR(255) NULL DEFAULT 'http://localhost:8080/imgwine/creation.png',
   PRIMARY KEY (`id`, `user_id`, `session_id`),
   CONSTRAINT `fk_recipe_session1`
     FOREIGN KEY (`session_id`)

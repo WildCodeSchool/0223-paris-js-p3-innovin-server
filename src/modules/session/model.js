@@ -64,7 +64,7 @@ const deleteSessionById = (id) => {
 findSessionByUserId = (id) => {
   return db
     .execute(
-      "SELECT category, date, place_name  from session_has_user JOIN user on user.id = session_has_user.user_id JOIN session on session.id = session_has_user.session_id JOIN location on location.id = session.location_id where user_id = ?",
+      "SELECT category, date, place_name, image  from session_has_user JOIN user on user.id = session_has_user.user_id JOIN session on session.id = session_has_user.session_id JOIN location on location.id = session.location_id where user_id = ?",
       [id]
     )
     .then((data) => {
