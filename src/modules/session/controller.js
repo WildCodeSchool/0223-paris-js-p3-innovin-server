@@ -6,6 +6,8 @@ const {
   createNewSession,
   findAllWithNumberOfParticipants,
   deleteSessionById,
+  deleteUserFromSessionById,
+  deleteWineFromSessionById,
 } = require("./model");
 
 const getAll = ({ req, res }) => {
@@ -68,6 +70,24 @@ const deleteSession = async (req, res) => {
   }
 };
 
+const deleteUserFromSession = async (req, res) => {
+  try {
+    await deleteUserFromSessionById(req.params);
+    res.sendStatus(204);
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+const deleteWineFromSession = async (req, res) => {
+  try {
+    await deleteWineFromSessionById(req.params);
+    res.sendStatus(204);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 module.exports = {
   getAll,
   getById,
@@ -75,4 +95,6 @@ module.exports = {
   getUserBySessionId,
   postNewSession,
   deleteSession,
+  deleteUserFromSession,
+  deleteWineFromSession,
 };

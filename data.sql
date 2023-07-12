@@ -90,7 +90,7 @@ VALUES
 		'millet.jm@live.com',
 		'$argon2id$v=19$m=65536,t=3,p=4$jFoy3cUueXp0P/8huFOoVw$dN6Zk+sfhZTEPwiB8BiSx4OTAwVYEQ7jYhnfyw95xlU',
 		23,
-		'ROLE_USER',
+		'ROLE_ADMIN',
 		NULL
 	),
 	(

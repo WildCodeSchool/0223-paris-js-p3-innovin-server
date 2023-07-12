@@ -55,13 +55,29 @@ const findUserBySessionId = (id) => {
 const createNewSession = (session) => {
   const { location, price, category, max_participants, date } = session;
   return db.execute(
-    "INSERT INTO session (category, date,location, price, max_participants) VALUES (?, ?, ?, ?, ?)",
+    "INSERT INTO session (category, date, location_id , price, max_participants) VALUES (?, ?, ?, ?, ?)",
     [category, date, location, price, max_participants]
   );
 };
 
 const deleteSessionById = (id) => {
   return db.execute("DELETE FROM session WHERE id = ?", [id]);
+};
+
+const deleteUserFromSessionById = (data) => {
+  const { sessionid, userid } = data;
+  return db.execute(
+    "DELETE FROM session_has_user WHERE session_id = ? AND user_id = ?",
+    [sessionid, userid]
+  );
+};
+
+const deleteWineFromSessionById = (data) => {
+  const { sessionid, wineid } = data;
+  return db.execute(
+    "DELETE FROM session_has_wine WHERE session_id = ? AND wine_id = ?",
+    [sessionid, wineid]
+  );
 };
 
 module.exports = {
@@ -72,4 +88,6 @@ module.exports = {
   createNewSession,
   findAllWithNumberOfParticipants,
   deleteSessionById,
+  deleteUserFromSessionById,
+  deleteWineFromSessionById,
 };
