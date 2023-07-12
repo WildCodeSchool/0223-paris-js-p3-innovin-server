@@ -7,6 +7,8 @@ const {
   findAllWithNumberOfParticipants,
   deleteSessionById,
   findSessionByUserId,
+  deleteUserFromSessionById,
+  deleteWineFromSessionById,
 } = require("./model");
 
 const getAll = ({ req, res }) => {
@@ -78,6 +80,23 @@ const getSessionByUserId = async (req, res) => {
     res.status(400).json("ressource with the specified id does not exist");
   }
 }
+const deleteUserFromSession = async (req, res) => {
+  try {
+    await deleteUserFromSessionById(req.params);
+    res.sendStatus(204);
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+const deleteWineFromSession = async (req, res) => {
+  try {
+    await deleteWineFromSessionById(req.params);
+    res.sendStatus(204);
+  } catch (error) {
+    console.log(error);
+  }
+};
 
 module.exports = {
   getAll,
@@ -86,5 +105,7 @@ module.exports = {
   getUserBySessionId,
   postNewSession,
   deleteSession,
-  getSessionByUserId
+  getSessionByUserId,
+  deleteUserFromSession,
+  deleteWineFromSession,
 };
