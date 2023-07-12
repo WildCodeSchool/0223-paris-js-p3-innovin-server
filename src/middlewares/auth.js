@@ -15,7 +15,6 @@ const hashPassword = async (req, res, next) => {
 
 const authenticate = async (req, res, next) => {
   const token = req.cookies["access_token"];
-  console.log("token", token);
 
   if (!token) {
     console.log("c'est ici que ça marche pas");
