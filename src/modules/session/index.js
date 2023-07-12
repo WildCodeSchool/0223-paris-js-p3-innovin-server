@@ -9,15 +9,18 @@ const {
   postNewSession,
   deleteSession,
   addRegistration,
+  getSessionsByUserId,
 } = require("./controller");
 
 router.get("/", getAll);
+router.get("/registered", authenticate, getSessionsByUserId);
 router.get("/:id", getById);
 router.get("/:id/wine", getWineBySessionId);
 router.get("/:id/user", getUserBySessionId);
-router.post("/", postNewSession);
-router.delete("/:id", deleteSession);
 
+router.post("/", postNewSession);
 router.post("/:id/register", authenticate, addRegistration);
+
+router.delete("/:id", deleteSession);
 
 module.exports = router;

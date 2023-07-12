@@ -23,6 +23,12 @@ const findById = (id) => {
   });
 };
 
+const findSessionsByUserId = (user_id) => {
+  return db.execute("SELECT session_id FROM session_has_user WHERE user_id=? ", [user_id]).then((data) => {
+    return data;
+  });
+};
+
 const findWineBySessionId = (id) => {
   return db
     .execute(
@@ -78,4 +84,5 @@ module.exports = {
   findAllWithNumberOfParticipants,
   deleteSessionById,
   getUserSessionsBySessionId,
+  findSessionsByUserId,
 };
