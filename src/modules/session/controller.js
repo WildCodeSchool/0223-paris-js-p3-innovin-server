@@ -7,6 +7,7 @@ const {
   createNewSession,
   findAllWithNumberOfParticipants,
   deleteSessionById,
+  getUserSessionsBySessionId,
 } = require("./model");
 
 const getAllWithNumberOfParticipants = ({ req, res }) => {
@@ -59,18 +60,23 @@ const getUserBySessionId = (req, res) => {
 const addRegistration = (req, res) => {
   const user_id = req.userId;
   const session_id = req.params.id;
-  registerSession(user_id, session_id)
-    .then((comment) => {
-      if (comment.affectedRows === 1) {
-        res.status(204).json({ comment });
-      } else {
-        res.status(404).json("No user found with this ID");
-      }
-    })
-    .catch((err) => {
-      console.error(err);
-      res.status(500).json("error server");
-    });
+  getUserSessionsBySessionId(user_id, session_id).then(([session]) => {
+    console.log(session);
+    if (session[0]) return res.status(400).json("Allready registered");
+    registerSession(user_id, session_id)
+      .then((comment) => {
+        if (comment[0].affectedRows === 1) {
+          res.sendStatus(204);
+        } else {
+          console.error("Wrong session id");
+          res.status(400).json("bad credentials");
+        }
+      })
+      .catch((err) => {
+        console.error(err);
+        res.status(500).json("error server");
+      });
+  });
 };
 
 const postNewSession = async (req, res) => {

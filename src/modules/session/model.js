@@ -64,6 +64,10 @@ const deleteSessionById = (id) => {
   return db.execute("DELETE FROM session WHERE id = ?", [id]);
 };
 
+const getUserSessionsBySessionId = (user_id, session_id) => {
+  return db.execute("Select * from session_has_user where user_id = ? and session_id =?", [user_id, session_id]);
+};
+
 module.exports = {
   findAll,
   findById,
@@ -73,4 +77,5 @@ module.exports = {
   createNewSession,
   findAllWithNumberOfParticipants,
   deleteSessionById,
+  getUserSessionsBySessionId,
 };
