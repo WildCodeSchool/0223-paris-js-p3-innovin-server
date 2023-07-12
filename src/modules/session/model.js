@@ -23,18 +23,27 @@ const findById = (id) => {
   });
 };
 
-const findSessionsByUserId = (user_id) => {
-  return db.execute("SELECT session_id FROM session_has_user WHERE user_id=? ", [user_id]).then((data) => {
-    return data;
-  });
-};
+// findSessionsByUserId,
+
+// const findSessionsByUserId = (user_id) => {
+//   return db.execute("SELECT session_id FROM session_has_user WHERE user_id=? ", [user_id]).then((data) => {
+//     return data;
+//   });
+//   return db
+//     .execute(
+//       "SELECT category, date, session.id, place_name, max_participants, COUNT(user_id) AS participants FROM session LEFT JOIN session_has_user ON session.id = session_has_user.session_id JOIN location on location.id = session.location_id WHERE session.id = ? GROUP BY session.id",
+//       [id]
+//     )
+//     .then(([data]) => {
+//       return data;
+//     });
+// };
 
 const findWineBySessionId = (id) => {
   return db
-    .execute(
-      "SELECT * FROM session_has_wine JOIN session ON session.id = session_has_wine.session_id JOIN wine ON wine.id = session_has_wine.wine_id WHERE session_id = ?",
-      [id]
-    )
+    .execute("SELECT * FROM session_has_wine JOIN wine ON wine.id = session_has_wine.wine_id WHERE session_id = ?", [
+      id,
+    ])
     .then(([data]) => {
       return data;
     });
@@ -43,7 +52,7 @@ const findWineBySessionId = (id) => {
 const findUserBySessionId = (id) => {
   return db
     .execute(
-      "SELECT * FROM session_has_user JOIN session ON session.id = session_has_user.session_id JOIN user ON user.id = session_has_user.user_id WHERE session_id = ?",
+      "SELECT user_id, u.firstname, u.lastname,comment FROM session_has_user JOIN user AS u ON u.id = session_has_user.user_id WHERE session_id = ?",
       [id]
     )
     .then(([data]) => {
@@ -57,13 +66,10 @@ const registerSession = (user_id, session_id) => {
 
 const createNewSession = (session) => {
   const { location, price, category, max_participants, date } = session;
-  return db.execute("INSERT INTO session (category, date,location, price, max_participants) VALUES (?, ?, ?, ?, ?)", [
-    category,
-    date,
-    location,
-    price,
-    max_participants,
-  ]);
+  return db.execute(
+    "INSERT INTO session (category, date, location_id , price, max_participants) VALUES (?, ?, ?, ?, ?)",
+    [category, date, location, price, max_participants]
+  );
 };
 
 const deleteSessionById = (id) => {
@@ -72,6 +78,27 @@ const deleteSessionById = (id) => {
 
 const getUserSessionsBySessionId = (user_id, session_id) => {
   return db.execute("Select * from session_has_user where user_id = ? and session_id =?", [user_id, session_id]);
+};
+
+const findSessionByUserId = (id) => {
+  return db
+    .execute(
+      "SELECT category, date, place_name, image, session_id  from session_has_user JOIN user on user.id = session_has_user.user_id JOIN session on session.id = session_has_user.session_id JOIN location on location.id = session.location_id where user_id = ?",
+      [id]
+    )
+    .then((data) => {
+      return data;
+    });
+};
+
+const deleteUserFromSessionById = (data) => {
+  const { sessionid, userid } = data;
+  return db.execute("DELETE FROM session_has_user WHERE session_id = ? AND user_id = ?", [sessionid, userid]);
+};
+
+const deleteWineFromSessionById = (data) => {
+  const { sessionid, wineid } = data;
+  return db.execute("DELETE FROM session_has_wine WHERE session_id = ? AND wine_id = ?", [sessionid, wineid]);
 };
 
 module.exports = {
@@ -84,5 +111,7 @@ module.exports = {
   findAllWithNumberOfParticipants,
   deleteSessionById,
   getUserSessionsBySessionId,
-  findSessionsByUserId,
+  findSessionByUserId,
+  deleteUserFromSessionById,
+  deleteWineFromSessionById,
 };

@@ -1,6 +1,5 @@
 const router = require("express").Router();
 
-const { authenticate } = require("../../middlewares/auth");
 const {
   getAll,
   getById,
@@ -9,11 +8,15 @@ const {
   postNewSession,
   deleteSession,
   addRegistration,
-  getSessionsByUserId,
+  getSessionByUserId,
+  deleteUserFromSession,
+  deleteWineFromSession,
 } = require("./controller");
 
+const { authenticate } = require("../../middlewares/auth");
+
 router.get("/", getAll);
-router.get("/registered", authenticate, getSessionsByUserId);
+router.get("/user", authenticate, getSessionByUserId);
 router.get("/:id", getById);
 router.get("/:id/wine", getWineBySessionId);
 router.get("/:id/user", getUserBySessionId);
@@ -22,5 +25,7 @@ router.post("/", postNewSession);
 router.post("/:id/register", authenticate, addRegistration);
 
 router.delete("/:id", deleteSession);
+router.delete("/:sessionid/wine/:wineid", deleteWineFromSession);
+router.delete("/:sessionid/user/:userid", deleteUserFromSession);
 
 module.exports = router;

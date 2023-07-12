@@ -8,7 +8,7 @@ const {
   findAllWithNumberOfParticipants,
   deleteSessionById,
   getUserSessionsBySessionId,
-  findSessionsByUserId,
+  findSessionByUserId,
 } = require("./model");
 
 const getAllWithNumberOfParticipants = ({ req, res }) => {
@@ -47,15 +47,14 @@ const getWineBySessionId = (req, res) => {
     });
 };
 
-const getSessionsByUserId = async (req, res) => {
-  console.log("req.userId", req.userId);
-  const user_id = req.userId;
-  findSessionsByUserId(user_id)
-    .then(([sessions]) => {
-      console.log(sessions);
-      res.status(200).json(sessions);
-    })
-    .catch(() => res.status(500).json("erreur serveur"));
+const getSessionByUserId = async (req, res) => {
+  try {
+    const [sessions] = await findSessionByUserId(req.userId);
+    res.status(200).json(sessions);
+  } catch (error) {
+    console.error(error);
+    res.status(400).json("ressource with the specified id does not exist");
+  }
 };
 
 const getUserBySessionId = (req, res) => {
@@ -111,6 +110,24 @@ const deleteSession = async (req, res) => {
   }
 };
 
+const deleteUserFromSession = async (req, res) => {
+  try {
+    await deleteUserFromSessionById(req.params);
+    res.sendStatus(204);
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+const deleteWineFromSession = async (req, res) => {
+  try {
+    await deleteWineFromSessionById(req.params);
+    res.sendStatus(204);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 module.exports = {
   getAll,
   getById,
@@ -120,5 +137,7 @@ module.exports = {
   deleteSession,
   addRegistration,
   getAllWithNumberOfParticipants,
-  getSessionsByUserId,
+  getSessionByUserId,
+  deleteUserFromSession,
+  deleteWineFromSession,
 };
