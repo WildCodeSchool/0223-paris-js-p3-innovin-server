@@ -17,7 +17,6 @@ const authenticate = async (req, res, next) => {
   const token = req.cookies["access_token"];
 
   if (!token) {
-    console.log("c'est ici que ça marche pas");
     return res.sendStatus(401);
   }
   try {

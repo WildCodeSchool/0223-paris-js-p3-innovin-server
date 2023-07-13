@@ -23,22 +23,6 @@ const findById = (id) => {
   });
 };
 
-// findSessionsByUserId,
-
-// const findSessionsByUserId = (user_id) => {
-//   return db.execute("SELECT session_id FROM session_has_user WHERE user_id=? ", [user_id]).then((data) => {
-//     return data;
-//   });
-//   return db
-//     .execute(
-//       "SELECT category, date, session.id, place_name, max_participants, COUNT(user_id) AS participants FROM session LEFT JOIN session_has_user ON session.id = session_has_user.session_id JOIN location on location.id = session.location_id WHERE session.id = ? GROUP BY session.id",
-//       [id]
-//     )
-//     .then(([data]) => {
-//       return data;
-//     });
-// };
-
 const findWineBySessionId = (id) => {
   return db
     .execute("SELECT * FROM session_has_wine JOIN wine ON wine.id = session_has_wine.wine_id WHERE session_id = ?", [
