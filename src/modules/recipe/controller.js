@@ -1,6 +1,6 @@
-const { findRecipeByUserId, findRecipeByRecipeI, AddOne, findRecipeByUserAndSessionId } = require("./model");
+const { findRecipeByUserId, findRecipeByRecipeId, AddOne, findRecipeByUserAndSessionId } = require("./model");
 
-const getSessionByUserId = async (req, res) => {
+const getRecipeByUserId = async (req, res) => {
     try {
       const [recipes] = await findRecipeByUserId(req.userId);
       res.status(200).json(recipes);
@@ -44,7 +44,7 @@ const getSessionByUserId = async (req, res) => {
   };
 
   module.exports = {
-    getSessionByUserId,
+    getRecipeByUserId,
     getById,
     createOne,
     getRecipeByUserAndSessionId
