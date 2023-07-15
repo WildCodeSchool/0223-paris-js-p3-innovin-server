@@ -22,7 +22,27 @@ findRecipeByRecipeId = (id) => {
     });
 };
 
+findRecipeByUserAndSessionId = (sessionId, userId) => {
+  return db
+  .execute(
+    "SELECT recipe.id from recipe WHERE session_id = ? and user_id = ?",
+    [sessionId, userId]
+  )
+  .then((data) => {
+    return data;
+  });
+}
+
+const AddOne = (userId, sessionId) => {
+  return db.execute(`insert recipe (user_id, session_id) values (?, ?)`, [
+    userId,
+    sessionId,
+  ]);
+};
+
 module.exports = {
   findRecipeByUserId,
-  findRecipeByRecipeId
+  findRecipeByRecipeId,
+  AddOne,
+  findRecipeByUserAndSessionId
 };
