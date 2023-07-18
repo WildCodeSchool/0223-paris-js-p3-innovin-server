@@ -1,9 +1,15 @@
 const router = require("express").Router();
-const { getAll, getSessionByUserId, getById } = require("./controller");
 const { authenticate } = require("../../middlewares/auth");
 
+const {
+  getAll,
+  getById,
+  getSessionByUserId,
+  getAllBySession,
+} = require("./controller");
 
-// router.get("/", getAll);
+router.get("/", getAll);
+router.get("/session/:id", getAllBySession);
 router.get("/user", authenticate, getSessionByUserId);
 router.get("/:id", authenticate, getById);
 
