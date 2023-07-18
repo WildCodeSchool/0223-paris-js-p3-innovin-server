@@ -3,16 +3,25 @@ const {
   findById,
   findWineBySessionId,
   findUserBySessionId,
+  registerSession,
   createNewSession,
   findAllWithNumberOfParticipants,
   deleteSessionById,
-  deleteUserFromSessionById,
-  deleteWineFromSessionById,
+  getUserSessionsBySessionId,
+  findSessionByUserId,
   createUserHasSession,
 } = require("./model");
 
-const getAll = ({ req, res }) => {
+const getAllWithNumberOfParticipants = ({ req, res }) => {
   findAllWithNumberOfParticipants()
+    .then(([sessions]) => {
+      res.status(200).json(sessions);
+    })
+    .catch((err) => console.error(err));
+};
+
+const getAll = ({ req, res }) => {
+  findAll()
     .then(([sessions]) => {
       res.status(200).json(sessions);
     })
@@ -41,6 +50,16 @@ const getWineBySessionId = (req, res) => {
     });
 };
 
+const getSessionByUserId = async (req, res) => {
+  try {
+    const [sessions] = await findSessionByUserId(req.userId);
+    res.status(200).json(sessions);
+  } catch (error) {
+    console.error(error);
+    res.status(400).json("ressource with the specified id does not exist");
+  }
+};
+
 const getUserBySessionId = (req, res) => {
   const { id } = req.params;
   findUserBySessionId(id)
@@ -50,6 +69,28 @@ const getUserBySessionId = (req, res) => {
     .catch(() => {
       res.status(500).json("erreur serveur");
     });
+};
+
+const addRegistration = (req, res) => {
+  const user_id = req.userId;
+  const session_id = req.params.id;
+  getUserSessionsBySessionId(user_id, session_id).then(([session]) => {
+    console.log(session);
+    if (session[0]) return res.status(400).json("Allready registered");
+    registerSession(user_id, session_id)
+      .then((comment) => {
+        if (comment[0].affectedRows === 1) {
+          res.sendStatus(204);
+        } else {
+          console.error("Wrong session id");
+          res.status(400).json("bad credentials");
+        }
+      })
+      .catch((err) => {
+        console.error(err);
+        res.status(500).json("error server");
+      });
+  });
 };
 
 const postNewSession = async (req, res) => {
@@ -106,6 +147,9 @@ module.exports = {
   getUserBySessionId,
   postNewSession,
   deleteSession,
+  addRegistration,
+  getAllWithNumberOfParticipants,
+  getSessionByUserId,
   deleteUserFromSession,
   deleteWineFromSession,
   postUserHasSession,

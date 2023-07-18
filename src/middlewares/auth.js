@@ -2,8 +2,7 @@ const argon = require("argon2");
 const jwt = require("jsonwebtoken");
 
 const hashPassword = async (req, res, next) => {
-  if (!req.body.password)
-    return res.status(400).json("password field required");
+  if (!req.body.password) return res.status(400).json("password field required");
   try {
     const hash = await argon.hash(req.body.password);
     req.body.password = hash;

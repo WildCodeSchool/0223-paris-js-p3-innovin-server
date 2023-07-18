@@ -350,59 +350,18 @@ VALUES
 	('Création', '2023-09-08 20:00:00', 70, 10, 6),
 	('Création', '2023-09-10 20:00:00', 70, 10, 2);
 
-INSERT INTO
-	mydb.`location` (place_name, lat, lng)
-VALUES
-	(
-		'La Cascade du Déroc',
-		44.646191513576305,
-		3.0704151738928127
-	),
-	(
-		'La Tour d''Apcher',
-		44.81673108072775,
-		3.3219272477633583
-	),
-	(
-		'Le Château de la Baume',
-		44.64956676177372,
-		3.193426100821216
-	),
-	(
-		'Sainte-Enimie',
-		44.36468812708561,
-		3.414404149425728
-	),
-	(
-		'Le Dolmen de Changefège',
-		44.497002049067675,
-		3.444169736391266
-	),
-	(
-		'La Cathédrale Notre-Dame de Mende',
-		44.51728207130067,
-		3.4979553871683047
-	),
-	(
-		'La Ferme Caussenarde',
-		44.218005074584966,
-		3.3241669338068474
-	),
-	(
-		'La Garde Guérin',
-		44.47762874611424,
-		3.9347045103730727
-	),
-	(
-		'La Cascade de Runes',
-		44.379286049543545,
-		3.6746024382808313
-	),
-	(
-		'Le Mont Lozère',
-		44.425732587922674,
-		3.7390425937705656
-	);
+INSERT INTO mydb.location (place_name,lat,lng,image) VALUES
+	 ('La Cascade du Déroc',44.6462,3.07042,'http://localhost:8080/workshops/deroc.jpeg'),
+	 ('La Tour d''Apcher',44.8167,3.32193,'http://localhost:8080/workshops/TourApcher.jpeg'),
+	 ('Le Château de la Baume',44.6496,3.19343,'http://localhost:8080/workshops/ChateauBaume.jpeg'),
+	 ('Sainte-Enimie',44.3647,3.4144,'http://localhost:8080/workshops/Sainte_enimie.jpeg'),
+	 ('Le Dolmen de Changefège',44.497,3.44417,'http://localhost:8080/workshops/Dolmen_Changefege.jpeg'),
+	 ('La Cathédrale Notre-Dame de Mende',44.5173,3.49796,'http://localhost:8080/workshops/ND_Mende.jpg'),
+	 ('La Ferme Caussenarde',44.218,3.32417,'http://localhost:8080/workshops/ferme_caussenarde.jpg'),
+	 ('La Garde Guérin',44.4776,3.9347,'http://localhost:8080/workshops/garde_guerin.jpeg'),
+	 ('La Cascade de Runes',44.3793,3.6746,'http://localhost:8080/workshops/cascade_runes.jpeg'),
+	 ('Le Mont Lozère',44.4257,3.73904,'http://localhost:8080/workshops/mont_lozere.jpeg');
+
 
 INSERT INTO
 	mydb.session_has_user (user_id, session_id)
@@ -500,7 +459,8 @@ INSERT INTO
 	)
 VALUES
 	(1, 2, 0, 1),
-	(2, 2, 1, 1);
+	(2, 2, 1, 1),
+	(4, 2, 0, 1);
 
 INSERT INTO
 	mydb.mix_wine (recipe_id, wine_id, percent_wine)
@@ -510,7 +470,10 @@ VALUES
 	(1, 3, 15),
 	(2, 1, 10),
 	(2, 4, 70),
-	(2, 5, 20);
+	(2, 5, 20),
+	(3, 1, 70),
+	(3, 2, 15),
+	(3, 3, 15);
 
 INSERT INTO
 	mydb.note (wine_id, user_id, session_id, note)

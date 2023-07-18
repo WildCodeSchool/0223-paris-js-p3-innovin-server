@@ -20,13 +20,15 @@ const findAll = () => {
   const findFavoritesByUserId = (id) => {
     return db
     .execute(
-      "SELECT * FROM user_has_favorite where user_id = ? ",
+      "SELECT * FROM user_has_favorite JOIN wine ON wine.id = user_has_favorite.wine_id WHERE user_id = ? ",
       [id]
     )
     .then((data) => {
       return data;
     });
   }
+
+
 
   const deleteOneFav = (userId, wineId) => {
     return db.execute("delete from user_has_favorite WHERE user_id = ? and wine_id = ?", [userId, wineId]).then(([result]) => {
