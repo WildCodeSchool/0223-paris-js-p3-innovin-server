@@ -8,6 +8,7 @@ const {
   deleteSessionById,
   deleteUserFromSessionById,
   deleteWineFromSessionById,
+  createUserHasSession,
 } = require("./model");
 
 const getAll = ({ req, res }) => {
@@ -60,6 +61,16 @@ const postNewSession = async (req, res) => {
     res.status(500).json("erreur serveur");
   }
 };
+
+const postUserHasSession = async (req, res) => {
+  try {
+    const newUserHasSession = await createUserHasSession(req.body);
+    res.status(200).json(newUserHasSession);
+  } catch (error) {
+    res.status(500).json("erreur serveur");
+  }
+};
+
 const deleteSession = async (req, res) => {
   const { id } = req.params;
   try {
@@ -97,4 +108,5 @@ module.exports = {
   deleteSession,
   deleteUserFromSession,
   deleteWineFromSession,
+  postUserHasSession,
 };

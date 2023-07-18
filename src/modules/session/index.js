@@ -8,6 +8,7 @@ const {
   deleteSession,
   deleteUserFromSession,
   deleteWineFromSession,
+  postUserHasSession,
 } = require("./controller");
 
 router.get("/", getAll);
@@ -16,6 +17,7 @@ router.get("/:id/wine", getWineBySessionId);
 router.get("/:id/user", getUserBySessionId);
 
 router.post("/", postNewSession);
+router.post("/userhassession", postUserHasSession);
 
 router.delete("/:id", deleteSession);
 router.delete("/:sessionid/wine/:wineid", deleteWineFromSession);
