@@ -19,7 +19,10 @@ const findById = (id) => {
 
 const findCurrent = (id) => {
   return db
-    .execute("SELECT id, email, firstname, lastname, age, role FROM user WHERE user.id = ? ", [id])
+    .execute(
+      "SELECT id, email, firstname, lastname, age, role FROM user WHERE user.id = ? ",
+      [id]
+    )
     .then(([data]) => {
       return data;
     });
@@ -27,26 +30,29 @@ const findCurrent = (id) => {
 
 const insert = (user) => {
   const { firstname, lastname, email, password, age } = user;
-  return db.execute(`insert into user (firstname, lastname, email, password, age) values (?, ?, ?, ?, ?)`, [
-    firstname,
-    lastname,
-    email,
-    password,
-    age,
-  ]);
+  return db.execute(
+    `insert into user (firstname, lastname, email, password, age) values (?, ?, ?, ?, ?)`,
+    [firstname, lastname, email, password, age]
+  );
 };
 
 const findByMail = async (email) => {
-  const [data] = await db.execute(`select * from user where email = ? `, [email]);
+  const [data] = await db.execute(`select * from user where email = ? `, [
+    email,
+  ]);
   return data;
 };
 
 const updateOne = (users, id) => {
-  return db.query("update user set ? WHERE id = ?", [users, id]).then(([result]) => result);
+  return db
+    .query("update user set ? WHERE id = ?", [users, id])
+    .then(([result]) => result);
 };
 
 const updateOneComment = (comment, id) => {
-  return db.query("update user set comment=? WHERE id = ?", [comment, id]).then(([result]) => result);
+  return db
+    .query("update user set comment=? WHERE id = ?", [comment, id])
+    .then(([result]) => result);
 };
 
 const deleteOne = (id) => {
@@ -54,6 +60,8 @@ const deleteOne = (id) => {
     return result;
   });
 };
+
+
 module.exports = {
   findAll,
   findById,
@@ -63,4 +71,5 @@ module.exports = {
   updateOneComment,
   deleteOne,
   findCurrent,
+
 };

@@ -11,6 +11,7 @@ const {
   getSessionByUserId,
   deleteUserFromSession,
   deleteWineFromSession,
+  postUserHasSession,
 } = require("./controller");
 
 const { authenticate } = require("../../middlewares/auth");
@@ -22,6 +23,7 @@ router.get("/:id/wine", getWineBySessionId);
 router.get("/:id/user", getUserBySessionId);
 
 router.post("/", postNewSession);
+router.post("/userhassession", postUserHasSession);
 router.post("/:id/register", authenticate, addRegistration);
 
 router.delete("/:id", deleteSession);

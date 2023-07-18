@@ -10,7 +10,11 @@ const {
   deleteUser,
   getCurrentUser,
 } = require("./controller");
-const { hashPassword, authenticate, isAdmin } = require("../../middlewares/auth");
+const {
+  hashPassword,
+  authenticate,
+  isAdmin,
+} = require("../../middlewares/auth");
 
 router.get("/", authenticate, isAdmin, getAll);
 router.get("/logout", authenticate, logout);
