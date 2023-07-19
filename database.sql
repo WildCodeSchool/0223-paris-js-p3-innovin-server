@@ -257,6 +257,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`region` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(200) NOT NULL,
   `description` TEXT NOT NULL,
+  `image` TEXT NOT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb3;
