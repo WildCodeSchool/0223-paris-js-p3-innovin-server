@@ -150,17 +150,17 @@ DEFAULT CHARACTER SET = utf8mb3;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`tag`
+-- Table mydb.tag
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`tag` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `type_of_tag` VARCHAR(45) NOT NULL,
-  `category` VARCHAR(45) NOT NULL,
-  `name` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`id`))
+CREATE TABLE IF NOT EXISTS mydb.tag (
+  id INT NOT NULL AUTO_INCREMENT,
+  type_of_tag VARCHAR(45) NOT NULL,
+  category VARCHAR(45) NOT NULL,
+  sub_category VARCHAR(100) NULL,
+  name VARCHAR(100) NOT NULL,
+  PRIMARY KEY (id))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb3;
-
 
 -- -----------------------------------------------------
 -- Table `mydb`.`note_has_tag`

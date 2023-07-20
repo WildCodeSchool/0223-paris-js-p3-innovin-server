@@ -1,7 +1,5 @@
 const router = require("express").Router();
-const { getAll, getById } = require("./controller");
+const { getAllWinesTags } = require("./controller");
 
-// router.get("/", getAll);
-// router.get("/:id", getById);
-
+router.get("/wines", getAllWinesTags);
 module.exports = router;
