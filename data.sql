@@ -243,62 +243,12 @@ VALUES
 		'Robe brique reflets tuilé sombre. Nez de bois brulé, de fumée, notes de réglisse, corsé, petit caractère de fruits confits, de notes grillées, tanins sans gras, finale franche.'
 	);
 
-INSERT INTO
-	mydb.`user` (
-		firstname,
-		lastname,
-		email,
-		password,
-		age,
-		`role`,
-		comment
-	)
-VALUES
-	(
-		'Celia',
-		'Golden',
-		'ceci.brams@gmail.com',
-		'$argon2id$v=19$m=65536,t=3,p=4$oKINUTSPrDaQKKNBnI3xuA$wz0ebKYpLsWWWYOUuw58jmrXKl7lMmlJGYHhNqZTJMM',
-		21,
-		'ROLE_USER',
-		NULL
-	),
-	(
-		'Saverio',
-		'Platinium',
-		'save.cutolo@gmail.com',
-		'$argon2id$v=19$m=65536,t=3,p=4$0kcgVUGnvv+FiSkqoWY1fg$3h3mUp4tjJJJmgPL57vjHIlN7wAOJcihSyjHHp4eICg',
-		28,
-		'ROLE_USER',
-		NULL
-	),
-	(
-		'JM',
-		'Guirlande',
-		'millet.jm@live.com',
-		'$argon2id$v=19$m=65536,t=3,p=4$jFoy3cUueXp0P/8huFOoVw$dN6Zk+sfhZTEPwiB8BiSx4OTAwVYEQ7jYhnfyw95xlU',
-		23,
-		'ROLE_ADMIN',
-		NULL
-	),
-	(
-		'Tom',
-		'Nana',
-		'lelaurain.tom@gmail.com',
-		'$argon2id$v=19$m=65536,t=3,p=4$t67zhRKcXGLqJ3p9KO5f5Q$q4RFIN4d02J76sr6HWh/bXmIjryzO6M7qLvLyxkANn8',
-		23,
-		'ROLE_USER',
-		NULL
-	),
-	(
-		'Thomas',
-		'Te',
-		'lonjon.thomas@gmail.com',
-		'$argon2id$v=19$m=65536,t=3,p=4$8iGCr2Bkx5pnsMzSkG3o8w$elbVXhunIGEVS8XewsCy/SvFce7zDxxbq14fLkMZpo0',
-		28,
-		'ROLE_USER',
-		NULL
-	);
+INSERT INTO mydb.`user` (firstname,lastname,email, password, role) VALUES
+	 ('Celia','Golden','ceci.brams@gmail.com','$argon2id$v=19$m=65536,t=3,p=4$oKINUTSPrDaQKKNBnI3xuA$wz0ebKYpLsWWWYOUuw58jmrXKl7lMmlJGYHhNqZTJMM','ROLE_USER'),
+	 ('Saverio','Platinium','save.cutolo@gmail.com','$argon2id$v=19$m=65536,t=3,p=4$0kcgVUGnvv+FiSkqoWY1fg$3h3mUp4tjJJJmgPL57vjHIlN7wAOJcihSyjHHp4eICg','ROLE_USER'),
+	 ('JM','Guirlande','millet.jm@live.com','$argon2id$v=19$m=65536,t=3,p=4$jFoy3cUueXp0P/8huFOoVw$dN6Zk+sfhZTEPwiB8BiSx4OTAwVYEQ7jYhnfyw95xlU','ROLE_USER'),
+	 ('Tom','Nana','lelaurain.tom@gmail.com','$argon2id$v=19$m=65536,t=3,p=4$t67zhRKcXGLqJ3p9KO5f5Q$q4RFIN4d02J76sr6HWh/bXmIjryzO6M7qLvLyxkANn8','ROLE_USER'),
+	 ('Thomas','Te','lonjon.thomas@gmail.com','$argon2id$v=19$m=65536,t=3,p=4$8iGCr2Bkx5pnsMzSkG3o8w$elbVXhunIGEVS8XewsCy/SvFce7zDxxbq14fLkMZpo0','ROLE_USER');
 
 INSERT INTO
 	mydb.`session` (
@@ -362,9 +312,6 @@ INSERT INTO mydb.location (place_name,lat,lng,image) VALUES
 	 ('La Cascade de Runes',44.3793,3.6746,'http://localhost:8080/workshops/cascade_runes.jpeg'),
 	 ('Le Mont Lozère',44.4257,3.73904,'http://localhost:8080/workshops/mont_lozere.jpeg');
 
-
-<<<<<<< HEAD
-<<<<<<< HEAD
 INSERT INTO
 	mydb.session_has_user (user_id, session_id)
 VALUES
@@ -373,29 +320,6 @@ VALUES
 	(5, 1),
 	(3, 2),
 	(4, 2);
-=======
-<<<<<<< HEAD
-INSERT INTO mydb.`user` (firstname,lastname,email,password,age,`role`,comment) VALUES
-     ('Celia','Golden','ceci.brams@gmail.com','$argon2id$v=19$m=65536,t=3,p=4$oKINUTSPrDaQKKNBnI3xuA$wz0ebKYpLsWWWYOUuw58jmrXKl7lMmlJGYHhNqZTJMM',21,'ROLE_USER',NULL),
-     ('Saverio','Platinium','save.cutolo@gmail.com','$argon2id$v=19$m=65536,t=3,p=4$0kcgVUGnvv+FiSkqoWY1fg$3h3mUp4tjJJJmgPL57vjHIlN7wAOJcihSyjHHp4eICg',28,'ROLE_USER',NULL),
-     ('JM','Guirlande','millet.jm@live.com','$argon2id$v=19$m=65536,t=3,p=4$jFoy3cUueXp0P/8huFOoVw$dN6Zk+sfhZTEPwiB8BiSx4OTAwVYEQ7jYhnfyw95xlU',23,'ROLE_USER',NULL),
-     ('Tom','Nana','lelaurain.tom@gmail.com','$argon2id$v=19$m=65536,t=3,p=4$t67zhRKcXGLqJ3p9KO5f5Q$q4RFIN4d02J76sr6HWh/bXmIjryzO6M7qLvLyxkANn8',23,'ROLE_USER',NULL),
-     ('Thomas','Te','lonjon.thomas@gmail.com','$argon2id$v=19$m=65536,t=3,p=4$8iGCr2Bkx5pnsMzSkG3o8w$elbVXhunIGEVS8XewsCy/SvFce7zDxxbq14fLkMZpo0',28,'ROLE_USER',NULL);
-=======
-
-=======
->>>>>>> 0021e72 (added contact and register)
-INSERT INTO mydb.`user` (firstname,lastname,email, password, role) VALUES
-	 ('Celia','Golden','ceci.brams@gmail.com','$argon2id$v=19$m=65536,t=3,p=4$oKINUTSPrDaQKKNBnI3xuA$wz0ebKYpLsWWWYOUuw58jmrXKl7lMmlJGYHhNqZTJMM','ROLE_USER'),
-	 ('Saverio','Platinium','save.cutolo@gmail.com','$argon2id$v=19$m=65536,t=3,p=4$0kcgVUGnvv+FiSkqoWY1fg$3h3mUp4tjJJJmgPL57vjHIlN7wAOJcihSyjHHp4eICg','ROLE_USER'),
-	 ('JM','Guirlande','millet.jm@live.com','$argon2id$v=19$m=65536,t=3,p=4$jFoy3cUueXp0P/8huFOoVw$dN6Zk+sfhZTEPwiB8BiSx4OTAwVYEQ7jYhnfyw95xlU','ROLE_USER'),
-	 ('Tom','Nana','lelaurain.tom@gmail.com','$argon2id$v=19$m=65536,t=3,p=4$t67zhRKcXGLqJ3p9KO5f5Q$q4RFIN4d02J76sr6HWh/bXmIjryzO6M7qLvLyxkANn8','ROLE_USER'),
-	 ('Thomas','Te','lonjon.thomas@gmail.com','$argon2id$v=19$m=65536,t=3,p=4$8iGCr2Bkx5pnsMzSkG3o8w$elbVXhunIGEVS8XewsCy/SvFce7zDxxbq14fLkMZpo0','ROLE_USER');
-<<<<<<< HEAD
->>>>>>> d3e2036 (register Ok)
->>>>>>> 3060144 (register Ok)
-=======
->>>>>>> 0021e72 (added contact and register)
 
 INSERT INTO
 	mydb.session_has_wine (wine_id, session_id)
@@ -505,21 +429,6 @@ INSERT INTO mydb.tag (type_of_tag,category,sub_category,name) VALUES
 INSERT INTO
 	mydb.user_has_tag (user_id, tag_id)
 VALUES
-	(1, 1),
-	(4, 1),
-	(1, 2),
-	(3, 3),
-	(1, 4),
-	(2, 4),
-	(5, 4),
-	(5, 5),
-	(2, 6),
-	(3, 6),
-	(4, 7),
-	(5, 7),
-	(3, 8),
-	(4, 8),
-	(2, 9);
 
 INSERT INTO
 	mydb.user_has_favorite (user_id, wine_id)
@@ -568,7 +477,6 @@ VALUES
 	(3, 2, 15),
 	(3, 3, 15);
 
-<<<<<<< HEAD
 INSERT INTO
 	mydb.note (wine_id, user_id, session_id, note)
 VALUES
@@ -582,7 +490,6 @@ VALUES
 	(3, 2, 2, 3),
 	(4, 2, 2, 10),
 	(5, 2, 2, 4);
-=======
 INSERT INTO mydb.session_has_wine (wine_id,session_id) VALUES
 	 (1,1),
 	 (2,1),
@@ -773,7 +680,6 @@ INSERT INTO mydb.note_has_tag (note_id,tag_id) VALUES
 	 (5,18),
 	 (6,18),
 	 (5,19);
->>>>>>> 0021e72 (added contact and register)
 
 INSERT INTO
 	mydb.note_has_tag (note_id, tag_id)

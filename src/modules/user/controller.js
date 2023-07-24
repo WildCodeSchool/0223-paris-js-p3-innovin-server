@@ -46,14 +46,14 @@ const getCurrentUser = async (req, res, next) => {
 
 
 
-const register = async (req, res, next) => {
+const register = async (req, res) => {
+  console.log(req.body)
   try {
     const {lastName,firstName,birthday, phone,email, password} = req.body;
-
-      const [user] = await findByEmail(req.body.email);
-      if (user) return res.status(400).json("email already exists");
-      const result = await insert({lastName,firstName,birthday,phone,email, password });
-      res.status(201).json({ id: result.insertId, lastName,firstName,birthday,phone,email,password });
+    const [user] = await findByEmail(req.body.email);
+    if (user) return res.status(400).json("email already exists");
+    const result = await insert({lastName,firstName,birthday,phone,email, password });
+    res.status(201).json({ id: result.insertId, lastName,firstName,birthday,phone,email,password });
   } catch (err) {
     console.error(err);
     res.status(500).send({

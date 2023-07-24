@@ -20,9 +20,7 @@ const postByIdTag = async (req, res)=>{
  
   try {
     for (let i = 0; i < tags.length; i++) {
-
-      await insertIdTag(req.userId, tags[i]);
-      
+      await insertIdTag(req.userId, tags[i]);      
     }
     res.sendStatus(201)
 
