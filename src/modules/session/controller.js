@@ -6,10 +6,12 @@ const {
   registerSession,
   createNewSession,
   findAllWithNumberOfParticipants,
+  findByIdWithNumberOfParticipants,
   deleteSessionById,
   getUserSessionsBySessionId,
   findSessionByUserId,
   createUserHasSession,
+  createWineHasSession,
 } = require("./model");
 
 const getAllWithNumberOfParticipants = ({ req, res }) => {
@@ -31,6 +33,17 @@ const getAll = ({ req, res }) => {
 const getById = (req, res) => {
   const { id } = req.params;
   findById(id)
+    .then(([session]) => {
+      !session
+        ? res.status(400).json("ressource with the specified id do not exist")
+        : res.status(200).json(session);
+    })
+    .catch((err) => console.error(err));
+};
+
+const getByIdWithNumberOfParticipants = (req, res) => {
+  const { id } = req.params;
+  findByIdWithNumberOfParticipants(id)
     .then(([session]) => {
       !session
         ? res.status(400).json("ressource with the specified id do not exist")
@@ -74,6 +87,7 @@ const getUserBySessionId = (req, res) => {
 const addRegistration = (req, res) => {
   const user_id = req.userId;
   const session_id = req.params.id;
+
   getUserSessionsBySessionId(user_id, session_id).then(([session]) => {
     console.log(session);
     if (session[0]) return res.status(400).json("Allready registered");
@@ -112,6 +126,15 @@ const postUserHasSession = async (req, res) => {
   }
 };
 
+const postWineHasSession = async (req, res) => {
+  try {
+    const newWineHasSession = await createWineHasSession(req.body);
+    res.status(200).json(newWineHasSession);
+  } catch (error) {
+    res.status(500).json("erreur serveur");
+  }
+};
+
 const deleteSession = async (req, res) => {
   const { id } = req.params;
   try {
@@ -143,6 +166,7 @@ const deleteWineFromSession = async (req, res) => {
 module.exports = {
   getAll,
   getById,
+  getByIdWithNumberOfParticipants,
   getWineBySessionId,
   getUserBySessionId,
   postNewSession,
@@ -153,4 +177,5 @@ module.exports = {
   deleteUserFromSession,
   deleteWineFromSession,
   postUserHasSession,
+  postWineHasSession,
 };

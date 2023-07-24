@@ -350,18 +350,69 @@ VALUES
 	('Création', '2023-09-08 20:00:00', 70, 10, 6),
 	('Création', '2023-09-10 20:00:00', 70, 10, 2);
 
-INSERT INTO mydb.location (place_name,lat,lng,image) VALUES
-	 ('La Cascade du Déroc',44.6462,3.07042,'http://localhost:8080/workshops/deroc.jpeg'),
-	 ('La Tour d''Apcher',44.8167,3.32193,'http://localhost:8080/workshops/TourApcher.jpeg'),
-	 ('Le Château de la Baume',44.6496,3.19343,'http://localhost:8080/workshops/ChateauBaume.jpeg'),
-	 ('Sainte-Enimie',44.3647,3.4144,'http://localhost:8080/workshops/Sainte_enimie.jpeg'),
-	 ('Le Dolmen de Changefège',44.497,3.44417,'http://localhost:8080/workshops/Dolmen_Changefege.jpeg'),
-	 ('La Cathédrale Notre-Dame de Mende',44.5173,3.49796,'http://localhost:8080/workshops/ND_Mende.jpg'),
-	 ('La Ferme Caussenarde',44.218,3.32417,'http://localhost:8080/workshops/ferme_caussenarde.jpg'),
-	 ('La Garde Guérin',44.4776,3.9347,'http://localhost:8080/workshops/garde_guerin.jpeg'),
-	 ('La Cascade de Runes',44.3793,3.6746,'http://localhost:8080/workshops/cascade_runes.jpeg'),
-	 ('Le Mont Lozère',44.4257,3.73904,'http://localhost:8080/workshops/mont_lozere.jpeg');
-
+INSERT INTO
+	mydb.location (place_name, lat, lng, image)
+VALUES
+	(
+		'La Cascade du Déroc',
+		44.6462,
+		3.07042,
+		'http://localhost:8080/workshops/deroc.jpeg'
+	),
+	(
+		'La Tour d''Apcher',
+		44.8167,
+		3.32193,
+		'http://localhost:8080/workshops/TourApcher.jpeg'
+	),
+	(
+		'Le Château de la Baume',
+		44.6496,
+		3.19343,
+		'http://localhost:8080/workshops/ChateauBaume.jpeg'
+	),
+	(
+		'Sainte-Enimie',
+		44.3647,
+		3.4144,
+		'http://localhost:8080/workshops/Sainte_enimie.jpeg'
+	),
+	(
+		'Le Dolmen de Changefège',
+		44.497,
+		3.44417,
+		'http://localhost:8080/workshops/Dolmen_Changefege.jpeg'
+	),
+	(
+		'La Cathédrale Notre-Dame de Mende',
+		44.5173,
+		3.49796,
+		'http://localhost:8080/workshops/ND_Mende.jpg'
+	),
+	(
+		'La Ferme Caussenarde',
+		44.218,
+		3.32417,
+		'http://localhost:8080/workshops/ferme_caussenarde.jpg'
+	),
+	(
+		'La Garde Guérin',
+		44.4776,
+		3.9347,
+		'http://localhost:8080/workshops/garde_guerin.jpeg'
+	),
+	(
+		'La Cascade de Runes',
+		44.3793,
+		3.6746,
+		'http://localhost:8080/workshops/cascade_runes.jpeg'
+	),
+	(
+		'Le Mont Lozère',
+		44.4257,
+		3.73904,
+		'http://localhost:8080/workshops/mont_lozere.jpeg'
+	);
 
 INSERT INTO
 	mydb.session_has_user (user_id, session_id)
@@ -489,6 +540,7 @@ VALUES
 	(4, 2, 2, 10),
 	(5, 2, 2, 4);
 
+rs
 INSERT INTO
 	mydb.note_has_tag (note_id, tag_id)
 VALUES
