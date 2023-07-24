@@ -4,8 +4,8 @@ const jwt = require("jsonwebtoken");
 const {
   findAll,
   findById,
+  findByEmail,
   insert,
-  findByMail,
   updateOne,
   updateOneByMail,
   updateOneComment,
@@ -35,8 +35,8 @@ const getById = (req, res) => {
 };
 
 const getCurrentUser = async (req, res, next) => {
-  try {
-    const [user] = await findCurrent(req.userId);
+  try {    
+     const [user] = await findCurrent(req.userId);   
     res.status(200).json(user);
   } catch (err) {
     console.error(err);
@@ -44,12 +44,16 @@ const getCurrentUser = async (req, res, next) => {
   }
 };
 
-const register = async (req, res) => {
-  const {lastName,firstName,birthday, phone,email, password} = req.body;
 
+
+const register = async (req, res, next) => {
   try {
-    const result = await insert({lastName,firstName,birthday,phone,email, password });
-    res.status(201).json({ id: result.insertId, lastName,firstName,birthday,phone,email,password });
+    const {lastName,firstName,birthday, phone,email, password} = req.body;
+
+      const [user] = await findByEmail(req.body.email);
+      if (user) return res.status(400).json("email already exists");
+      const result = await insert({lastName,firstName,birthday,phone,email, password });
+      res.status(201).json({ id: result.insertId, lastName,firstName,birthday,phone,email,password });
   } catch (err) {
     console.error(err);
     res.status(500).send({
@@ -57,6 +61,22 @@ const register = async (req, res) => {
     });
   }
 };
+
+
+
+// const register = async (req, res) => {
+//   const {lastName,firstName,birthday, phone,email, password} = req.body;
+
+//   try {
+//     const result = await insert({lastName,firstName,birthday,phone,email, password });
+//     res.status(201).json({ id: result.insertId, lastName,firstName,birthday,phone,email,password });
+//   } catch (err) {
+//     console.error(err);
+//     res.status(500).send({
+//       error: err.message,
+//     });
+//   }
+// };
 
 const login = async (req, res) => {
   const { email, password } = req.body;
@@ -68,7 +88,7 @@ const login = async (req, res) => {
   }
 
   try {
-    const [user] = await findByMail(email);
+    const [user] = await findByEmail(email);
     if (!user) {
       res.status(403).json("Invalid email");
     } else {
@@ -109,16 +129,25 @@ const logout = (req, res) => {
 };
 
 const sendResetPassword = async (req, res, next) => {
-  const { email } = req.body;
+  const [user] = await findByEmail(req.body.email);
+  console.log(user)
+  if (!user){
+    res.status(401).send({
+      error: "Invalid email",
+    });
+    // console.log(user);
+  }else{
+    try {
+        const resetToken = jwt.sign({ email }, process.env.JWT_AUTH_SECRET);
+        const url = `${process.env.FRONTEND_URL}/resetPassword?token=${resetToken}`;
+        await sendResetPasswordMail({ dest: email, url });
+        res.sendStatus(200);
+    } catch (error) {
+        next(error);
+    }
 
-  try {
-      const resetToken = jwt.sign({ email }, process.env.JWT_AUTH_SECRET);
-      const url = `${process.env.FRONTEND_URL}/resetPassword?token=${resetToken}`;
-      await sendResetPasswordMail({ dest: email, url });
-      res.sendStatus(200);
-  } catch (error) {
-      next(error);
   }
+
 
 }
 

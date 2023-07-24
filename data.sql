@@ -364,6 +364,7 @@ INSERT INTO mydb.location (place_name,lat,lng,image) VALUES
 
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 INSERT INTO
 	mydb.session_has_user (user_id, session_id)
 VALUES
@@ -382,14 +383,19 @@ INSERT INTO mydb.`user` (firstname,lastname,email,password,age,`role`,comment) V
      ('Thomas','Te','lonjon.thomas@gmail.com','$argon2id$v=19$m=65536,t=3,p=4$8iGCr2Bkx5pnsMzSkG3o8w$elbVXhunIGEVS8XewsCy/SvFce7zDxxbq14fLkMZpo0',28,'ROLE_USER',NULL);
 =======
 
+=======
+>>>>>>> 0021e72 (added contact and register)
 INSERT INTO mydb.`user` (firstname,lastname,email, password, role) VALUES
 	 ('Celia','Golden','ceci.brams@gmail.com','$argon2id$v=19$m=65536,t=3,p=4$oKINUTSPrDaQKKNBnI3xuA$wz0ebKYpLsWWWYOUuw58jmrXKl7lMmlJGYHhNqZTJMM','ROLE_USER'),
 	 ('Saverio','Platinium','save.cutolo@gmail.com','$argon2id$v=19$m=65536,t=3,p=4$0kcgVUGnvv+FiSkqoWY1fg$3h3mUp4tjJJJmgPL57vjHIlN7wAOJcihSyjHHp4eICg','ROLE_USER'),
 	 ('JM','Guirlande','millet.jm@live.com','$argon2id$v=19$m=65536,t=3,p=4$jFoy3cUueXp0P/8huFOoVw$dN6Zk+sfhZTEPwiB8BiSx4OTAwVYEQ7jYhnfyw95xlU','ROLE_USER'),
 	 ('Tom','Nana','lelaurain.tom@gmail.com','$argon2id$v=19$m=65536,t=3,p=4$t67zhRKcXGLqJ3p9KO5f5Q$q4RFIN4d02J76sr6HWh/bXmIjryzO6M7qLvLyxkANn8','ROLE_USER'),
 	 ('Thomas','Te','lonjon.thomas@gmail.com','$argon2id$v=19$m=65536,t=3,p=4$8iGCr2Bkx5pnsMzSkG3o8w$elbVXhunIGEVS8XewsCy/SvFce7zDxxbq14fLkMZpo0','ROLE_USER');
+<<<<<<< HEAD
 >>>>>>> d3e2036 (register Ok)
 >>>>>>> 3060144 (register Ok)
+=======
+>>>>>>> 0021e72 (added contact and register)
 
 INSERT INTO
 	mydb.session_has_wine (wine_id, session_id)
@@ -562,6 +568,7 @@ VALUES
 	(3, 2, 15),
 	(3, 3, 15);
 
+<<<<<<< HEAD
 INSERT INTO
 	mydb.note (wine_id, user_id, session_id, note)
 VALUES
@@ -575,6 +582,198 @@ VALUES
 	(3, 2, 2, 3),
 	(4, 2, 2, 10),
 	(5, 2, 2, 4);
+=======
+INSERT INTO mydb.session_has_wine (wine_id,session_id) VALUES
+	 (1,1),
+	 (2,1),
+	 (3,1),
+	 (4,1),
+	 (1,2),
+	 (2,2),
+	 (3,2),
+	 (4,2),
+     (5,1),
+     (5,2);
+
+
+INSERT INTO mydb.tag (type_of_tag,category,sub_category,name) VALUES
+	 ('User','Couleur',NULL,'Vin Rouge'),
+	 ('User','Couleur',NULL,'Vin Blanc'),
+	 ('User','Arôme',NULL,'Fruité'),
+	 ('User','Arôme',NULL,'Floral'),
+	 ('User','Arôme',NULL,'Végétal'),
+	 ('User','Arôme',NULL,'Boisé'),
+	 ('User','Arôme',NULL,'Balsamique'),
+	 ('User','Arôme',NULL,'Minéral'),
+	 ('User','Arôme',NULL,'Animal'),
+	 ('User','Arôme',NULL,'Epicé'),
+	 ('User','Sucrosité',NULL,'Sec'),
+	 ('User','Sucrosité',NULL,'Moelleux'),
+	 ('Wine','Oeil','Couleur','Framboise'),
+	 ('Wine','Oeil','Couleur','Cerise'),
+	 ('Wine','Oeil','Couleur','Rubis'),
+	 ('Wine','Oeil','Couleur','Pourpre'),
+	 ('Wine','Oeil','Couleur','Violet'),
+	 ('Wine','Oeil','Couleur','Grenart'),
+	 ('Wine','Oeil','Couleur','Tuilé'),
+	 ('Wine','Oeil','Couleur','Jaune vert'),
+	 ('Wine','Oeil','Couleur','Jaune paille'),
+	 ('Wine','Oeil','Couleur','Or vert'),
+	 ('Wine','Oeil','Couleur','Or jaune '),
+	 ('Wine','Oeil','Couleur','Doré'),
+	 ('Wine','Oeil','Couleur','Ambré'),
+	 ('Wine','Oeil','Couleur','Roux'),
+	 ('Wine','Oeil','Intensité de la Couleur ','Pâle'),
+	 ('Wine','Oeil','Intensité de la Couleur ','Claire'),
+	 ('Wine','Oeil','Intensité de la Couleur ','Soutenue'),
+	 ('Wine','Oeil','Intensité de la Couleur ','Intense'),
+	 ('Wine','Oeil','Fluidité des Larmes','Visqueuses'),
+	 ('Wine','Oeil','Fluidité des Larmes','Épaisses'),
+	 ('Wine','Oeil','Fluidité des Larmes','Coulantes'),
+	 ('Wine','Oeil','Fluidité des Larmes','Fluides'),
+	 ('Wine','Oeil','Limpidité','Trouble'),
+	 ('Wine','Oeil','Limpidité','Floue'),
+	 ('Wine','Oeil','Limpidité','Voilée'),
+	 ('Wine','Oeil','Limpidité','Limpide'),
+	 ('Wine','Oeil','Brillance','Terne'),
+	 ('Wine','Oeil','Brillance','Lumineuse'),
+	 ('Wine','Oeil','Brillance','Étincelante'),
+	 ('Wine','Nez','Intensité des Arômes','Fermé'),
+	 ('Wine','Nez','Intensité des Arômes','Discret'),
+	 ('Wine','Nez','Intensité des Arômes','Aromatique'),
+	 ('Wine','Nez','Intensité des Arômes','Ouvert'),
+	 ('Wine','Nez','Complexité','Douteux'),
+	 ('Wine','Nez','Complexité','Ouvert'),
+	 ('Wine','Nez','Complexité','Franc'),
+	 ('Wine','Nez','Complexité','Complexe'),
+	 ('Wine','Nez','Familles Arômatiques','Fruité'),
+	 ('Wine','Nez','Familles Arômatiques','Floral'),
+	 ('Wine','Nez','Familles Arômatiques','Végétal'),
+	 ('Wine','Nez','Familles Arômatiques','Boisé'),
+	 ('Wine','Nez','Familles Arômatiques','Balsamique'),
+	 ('Wine','Nez','Familles Arômatiques','Minéral'),
+	 ('Wine','Nez','Familles Arômatiques','Animal'),
+	 ('Wine','Nez','Familles Arômatiques','Epicé'),
+	 ('Wine','La Bouche','Tanins','Apre'),
+	 ('Wine','La Bouche','Tanins','Charpenté'),
+	 ('Wine','La Bouche','Tanins','Fondu'),
+	 ('Wine','La Bouche','Tanins','Lisse'),
+	 ('Wine','La Bouche','Acidité','Moux'),
+	 ('Wine','La Bouche','Acidité','Frais'),
+	 ('Wine','La Bouche','Acidité','Vif'),
+	 ('Wine','La Bouche','Acidité','Nerveux'),
+	 ('Wine','La Bouche','Robe','Légère'),
+	 ('Wine','La Bouche','Robe','Fluide'),
+	 ('Wine','La Bouche','Robe','Charpentée'),
+	 ('Wine','La Bouche','Robe','Epaisse'),
+	 ('Wine','La Bouche','Sucre','Sec'),
+	 ('Wine','La Bouche','Sucre','Doux'),
+	 ('Wine','La Bouche','Sucre','Moelleux'),
+	 ('Wine','La Bouche','Sucre','Liquoreux'),
+	 ('Wine','La Bouche','Alcool','Faible'),
+	 ('Wine','La Bouche','Alcool','Généreux'),
+	 ('Wine','La Bouche','Alcool','Gras'),
+	 ('Wine','La Bouche','Alcool','Alcooleux'),
+	 ('Wine','La Bouche','Persistance Arômatique','Courte'),
+	 ('Wine','La Bouche','Persistance Arômatique','Développée'),
+	 ('Wine','La Bouche','Persistance Arômatique','Longue'),
+	 ('Wine','La Bouche','Persistance Arômatique','Persistante'),
+	 ('Wine','La Bouche','Familles Arômatiques','Fruité'),
+	 ('Wine','La Bouche','Familles Arômatiques','Végétal'),
+	 ('Wine','La Bouche','Familles Arômatiques','Boisé'),
+	 ('Wine','La Bouche','Familles Arômatiques','Minéral'),
+	 ('Wine','La Bouche','Familles Arômatiques','Animal'),
+	 ('Wine','La Bouche','Familles Arômatiques','Epicé'),
+	 ('Wine','La Bouche','Familles Arômatiques','Floral'),
+	 ('Wine','La Bouche','Familles Arômatiques','Balsamique');
+
+
+INSERT INTO mydb.user_has_tag (user_id,tag_id) VALUES
+	 (1,1),
+	 (4,1),
+	 (1,2),
+	 (3,3),
+	 (1,4),
+	 (2,4),
+	 (5,4),
+	 (5,5),
+	 (2,6),
+	 (3,6),
+	 (4,7),
+	 (5,7),
+	 (3,8),
+	 (4,8),
+	 (2,9);
+
+INSERT INTO mydb.user_has_favorite (user_id,wine_id) VALUES
+	 (1,1),
+	 (2,1),
+	 (3,1),
+	 (5,1),
+	 (1,2),
+	 (3,2),
+	 (4,2),
+	 (5,2),
+	 (1,3),
+	 (3,3),
+	 (4,3),
+	 (5,3),
+	 (2,4),
+	 (4,4),
+	 (5,4),
+	 (2,5),
+	 (3,5),
+	 (5,5);
+
+INSERT INTO mydb.recipe (user_id,session_id,won_contest,selected_for_context) VALUES
+	 (1,2,0,1),
+	 (2,2,1,1);
+
+
+INSERT INTO mydb.mix_wine (recipe_id,wine_id,percent_wine) VALUES
+	 (1,1,70),
+	 (1,2,15),
+	 (1,3,15),
+	 (2,1,10),
+	 (2,4,70),
+	 (2,5,20);
+
+
+INSERT INTO mydb.note (wine_id,user_id,session_id,note) VALUES
+	 (1,1,2,10),
+	 (2,1,2,9),
+	 (3,1,2,8),
+	 (4,1,2,5),
+	 (5,1,2,7),
+	 (1,2,2,5),
+	 (2,2,2,1),
+	 (3,2,2,3),
+	 (4,2,2,10),
+	 (5,2,2,4);
+
+
+INSERT INTO mydb.note_has_tag (note_id,tag_id) VALUES
+	 (1,10),
+	 (10,10),
+	 (1,11),
+	 (9,11),
+	 (10,11),
+	 (2,12),
+	 (9,12),
+	 (2,13),
+	 (8,13),
+	 (3,14),
+	 (8,14),
+	 (3,15),
+	 (7,15),
+	 (4,16),
+	 (7,16),
+	 (4,17),
+	 (6,17),
+	 (5,18),
+	 (6,18),
+	 (5,19);
+>>>>>>> 0021e72 (added contact and register)
 
 INSERT INTO
 	mydb.note_has_tag (note_id, tag_id)
