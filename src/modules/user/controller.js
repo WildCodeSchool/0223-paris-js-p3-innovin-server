@@ -129,6 +129,7 @@ const logout = (req, res) => {
 };
 
 const sendResetPassword = async (req, res, next) => {
+  const {email} = req.body;
   const [user] = await findByEmail(req.body.email);
   console.log(user)
   if (!user){

@@ -29,7 +29,6 @@ router.post("/login", login);
 
 router.post("/sendResetPassword", sendResetPassword);
 router.post("/resetPassword", resetPassword);
-// router.post("/contact",  );
 
 router.put("/:id", authenticate, updateUser);
 router.put("/comment", authenticate, updateComment);
