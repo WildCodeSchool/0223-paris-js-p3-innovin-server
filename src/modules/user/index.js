@@ -8,7 +8,7 @@ const {
   updateUser,
   updateComment,
   deleteUser,
-  getCurrentUser,
+  getCurrentUser,sendResetPassword, resetPassword
 } = require("./controller");
 const {
   hashPassword,
@@ -23,6 +23,8 @@ router.get("/:id", getById);
 
 router.post("/register", hashPassword, register);
 router.post("/login", login);
+router.post("/sendResetPassword", sendResetPassword);
+router.post("/resetPassword", resetPassword);
 
 router.put("/:id", authenticate, updateUser);
 router.put("/comment", authenticate, updateComment);

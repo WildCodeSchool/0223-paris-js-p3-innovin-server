@@ -363,6 +363,7 @@ INSERT INTO mydb.location (place_name,lat,lng,image) VALUES
 	 ('Le Mont Lozère',44.4257,3.73904,'http://localhost:8080/workshops/mont_lozere.jpeg');
 
 
+<<<<<<< HEAD
 INSERT INTO
 	mydb.session_has_user (user_id, session_id)
 VALUES
@@ -371,6 +372,24 @@ VALUES
 	(5, 1),
 	(3, 2),
 	(4, 2);
+=======
+<<<<<<< HEAD
+INSERT INTO mydb.`user` (firstname,lastname,email,password,age,`role`,comment) VALUES
+     ('Celia','Golden','ceci.brams@gmail.com','$argon2id$v=19$m=65536,t=3,p=4$oKINUTSPrDaQKKNBnI3xuA$wz0ebKYpLsWWWYOUuw58jmrXKl7lMmlJGYHhNqZTJMM',21,'ROLE_USER',NULL),
+     ('Saverio','Platinium','save.cutolo@gmail.com','$argon2id$v=19$m=65536,t=3,p=4$0kcgVUGnvv+FiSkqoWY1fg$3h3mUp4tjJJJmgPL57vjHIlN7wAOJcihSyjHHp4eICg',28,'ROLE_USER',NULL),
+     ('JM','Guirlande','millet.jm@live.com','$argon2id$v=19$m=65536,t=3,p=4$jFoy3cUueXp0P/8huFOoVw$dN6Zk+sfhZTEPwiB8BiSx4OTAwVYEQ7jYhnfyw95xlU',23,'ROLE_USER',NULL),
+     ('Tom','Nana','lelaurain.tom@gmail.com','$argon2id$v=19$m=65536,t=3,p=4$t67zhRKcXGLqJ3p9KO5f5Q$q4RFIN4d02J76sr6HWh/bXmIjryzO6M7qLvLyxkANn8',23,'ROLE_USER',NULL),
+     ('Thomas','Te','lonjon.thomas@gmail.com','$argon2id$v=19$m=65536,t=3,p=4$8iGCr2Bkx5pnsMzSkG3o8w$elbVXhunIGEVS8XewsCy/SvFce7zDxxbq14fLkMZpo0',28,'ROLE_USER',NULL);
+=======
+
+INSERT INTO mydb.`user` (firstname,lastname,email, password, role) VALUES
+	 ('Celia','Golden','ceci.brams@gmail.com','$argon2id$v=19$m=65536,t=3,p=4$oKINUTSPrDaQKKNBnI3xuA$wz0ebKYpLsWWWYOUuw58jmrXKl7lMmlJGYHhNqZTJMM','ROLE_USER'),
+	 ('Saverio','Platinium','save.cutolo@gmail.com','$argon2id$v=19$m=65536,t=3,p=4$0kcgVUGnvv+FiSkqoWY1fg$3h3mUp4tjJJJmgPL57vjHIlN7wAOJcihSyjHHp4eICg','ROLE_USER'),
+	 ('JM','Guirlande','millet.jm@live.com','$argon2id$v=19$m=65536,t=3,p=4$jFoy3cUueXp0P/8huFOoVw$dN6Zk+sfhZTEPwiB8BiSx4OTAwVYEQ7jYhnfyw95xlU','ROLE_USER'),
+	 ('Tom','Nana','lelaurain.tom@gmail.com','$argon2id$v=19$m=65536,t=3,p=4$t67zhRKcXGLqJ3p9KO5f5Q$q4RFIN4d02J76sr6HWh/bXmIjryzO6M7qLvLyxkANn8','ROLE_USER'),
+	 ('Thomas','Te','lonjon.thomas@gmail.com','$argon2id$v=19$m=65536,t=3,p=4$8iGCr2Bkx5pnsMzSkG3o8w$elbVXhunIGEVS8XewsCy/SvFce7zDxxbq14fLkMZpo0','ROLE_USER');
+>>>>>>> d3e2036 (register Ok)
+>>>>>>> 3060144 (register Ok)
 
 INSERT INTO
 	mydb.session_has_wine (wine_id, session_id)

@@ -29,11 +29,10 @@ const findCurrent = (id) => {
 };
 
 const insert = (user) => {
-  const { firstname, lastname, email, password, age } = user;
-  return db.execute(
-    `insert into user (firstname, lastname, email, password, age) values (?, ?, ?, ?, ?)`,
-    [firstname, lastname, email, password, age]
-  );
+  const { lastName,firstName,birthday,phone,email, password } = user;
+  return db.execute(`insert into user (lastName,firstName,birthday,phone,email, password) values (?, ?, ?, ?, ?, ?)`, [
+    lastName,firstName,birthday,phone,email, password
+  ]);
 };
 
 const findByMail = async (email) => {
@@ -42,6 +41,10 @@ const findByMail = async (email) => {
   ]);
   return data;
 };
+
+const updateOneByMail = async (user, email) => {
+  return db.query("UPDATE user set ? WHERE email = ?", [user, email])
+}
 
 const updateOne = (users, id) => {
   return db
@@ -67,6 +70,7 @@ module.exports = {
   findById,
   insert,
   findByMail,
+  updateOneByMail,
   updateOne,
   updateOneComment,
   deleteOne,

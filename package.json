@@ -20,7 +20,8 @@
     "express": "^4.17.1",
     "helmet": "^7.0.0",
     "jsonwebtoken": "^9.0.0",
-    "mysql2": "^2.3.3"
+    "mysql2": "^2.3.3",
+    "nodemailer": "^6.9.3"
   },
   "devDependencies": {
     "jest": "^26.0.1",

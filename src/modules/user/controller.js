@@ -7,10 +7,13 @@ const {
   insert,
   findByMail,
   updateOne,
+  updateOneByMail,
   updateOneComment,
   deleteOne,
   findCurrent,
 } = require("./model");
+
+const {sendResetPasswordMail} = require("../../helpers/mailer.js")
 
 const getAll = ({ req, res }) => {
   findAll()
@@ -42,17 +45,11 @@ const getCurrentUser = async (req, res, next) => {
 };
 
 const register = async (req, res) => {
-  const { firstname, lastname, email, password, age } = req.body;
-  if (!email) {
-    res.status(400).send({ error: "Please specify email" });
-    return;
-  }
+  const {lastName,firstName,birthday, phone,email, password} = req.body;
 
   try {
-    const result = await insert({ firstname, lastname, email, password, age });
-    res
-      .status(201)
-      .json({ id: result.insertId, firstname, lastname, email, age });
+    const result = await insert({lastName,firstName,birthday,phone,email, password });
+    res.status(201).json({ id: result.insertId, lastName,firstName,birthday,phone,email,password });
   } catch (err) {
     console.error(err);
     res.status(500).send({
@@ -111,6 +108,34 @@ const logout = (req, res) => {
   return res.clearCookie("access_token").sendStatus(200);
 };
 
+const sendResetPassword = async (req, res, next) => {
+  const { email } = req.body;
+
+  try {
+      const resetToken = jwt.sign({ email }, process.env.JWT_AUTH_SECRET);
+      const url = `${process.env.FRONTEND_URL}/resetPassword?token=${resetToken}`;
+      await sendResetPasswordMail({ dest: email, url });
+      res.sendStatus(200);
+  } catch (error) {
+      next(error);
+  }
+
+}
+
+const resetPassword = async (req, res, next) => {
+  const { token, password } = req.body;
+
+  try {
+      const decoded = jwt.verify(token, process.env.JWT_AUTH_SECRET);
+      const hash = await argon.hash(password);
+      await updateOneByMail({password: hash}, decoded.email);
+      res.sendStatus(204);
+  } catch (error) {
+      next(error);
+  }
+}
+
+
 const updateUser = (req, res) => {
   const id = req.userId;
   const user = req.body;
@@ -167,4 +192,6 @@ module.exports = {
   updateComment,
   deleteUser,
   getCurrentUser,
+  sendResetPassword, 
+  resetPassword
 };

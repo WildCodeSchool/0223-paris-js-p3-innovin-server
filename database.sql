@@ -60,7 +60,8 @@ CREATE TABLE IF NOT EXISTS `mydb`.`user` (
   `lastname` VARCHAR(45) NOT NULL,
   `email` VARCHAR(45) NOT NULL UNIQUE,
   `password` VARCHAR(255) NOT NULL,
-  `age` INT NOT NULL,
+  `birthday` DATETIME DEFAULT NULL,
+  `phone` INT DEFAULT NULL,
   `role` enum('ROLE_ADMIN','ROLE_USER') NOT NULL DEFAULT 'ROLE_USER',
   `comment` TEXT DEFAULT NULL,
   PRIMARY KEY (`id`))
