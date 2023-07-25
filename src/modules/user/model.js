@@ -17,36 +17,41 @@ const findById = (id) => {
     });
 };
 
+const findByEmail = async (email) => {
+  const [data] = await db.query("SELECT * FROM user WHERE email = ?", [email]);
+  return data;
+}
+
+
 const findCurrent = (id) => {
   return db
-    .execute("SELECT id, email, firstname, lastname, age, role FROM user WHERE user.id = ? ", [id])
+    .execute("SELECT id, email,lastname, firstname, birthday,phone, role FROM user WHERE user.id = ? ", [id])
     .then(([data]) => {
       return data;
     });
 };
 
 const insert = (user) => {
-  const { firstname, lastname, email, password, age } = user;
-  return db.execute(`insert into user (firstname, lastname, email, password, age) values (?, ?, ?, ?, ?)`, [
-    firstname,
-    lastname,
-    email,
-    password,
-    age,
+  const { lastName,firstName,birthday,phone,email, password } = user;
+  return db.execute(`insert into user (lastName,firstName,birthday,phone,email, password) values (?, ?, ?, ?, ?, ?)`, [
+    lastName,firstName,birthday,phone,email, password
   ]);
 };
 
-const findByMail = async (email) => {
-  const [data] = await db.execute(`select * from user where email = ? `, [email]);
-  return data;
-};
+const updateOneByMail = async (user, email) => {
+  return db.query("UPDATE user set ? WHERE email = ?", [user, email])
+}
 
 const updateOne = (users, id) => {
-  return db.query("update user set ? WHERE id = ?", [users, id]).then(([result]) => result);
+  return db
+    .query("update user set ? WHERE id = ?", [users, id])
+    .then(([result]) => result);
 };
 
 const updateOneComment = (comment, id) => {
-  return db.query("update user set comment=? WHERE id = ?", [comment, id]).then(([result]) => result);
+  return db
+    .query("update user set comment=? WHERE id = ?", [comment, id])
+    .then(([result]) => result);
 };
 
 const deleteOne = (id) => {
@@ -54,13 +59,17 @@ const deleteOne = (id) => {
     return result;
   });
 };
+
+
 module.exports = {
   findAll,
   findById,
   insert,
-  findByMail,
+  findByEmail,
+  updateOneByMail,
   updateOne,
   updateOneComment,
   deleteOne,
   findCurrent,
+
 };

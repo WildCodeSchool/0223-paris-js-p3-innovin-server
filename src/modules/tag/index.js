@@ -1,7 +1,14 @@
 const router = require("express").Router();
-const { getAll, getById } = require("./controller");
+const { getAllWinesTags } = require("./controller");
 
-// router.get("/", getAll);
-// router.get("/:id", getById);
+
+const { authenticate } = require("../../middlewares/auth");
+const { getByCategory, postByIdTag } = require("./controller");
+
+
+router.get("/category", getByCategory);
+router.post("/sendTags",authenticate, postByIdTag);
+
+router.get("/wines", getAllWinesTags);
 
 module.exports = router;
