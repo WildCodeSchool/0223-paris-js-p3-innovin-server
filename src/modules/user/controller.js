@@ -62,22 +62,6 @@ const register = async (req, res) => {
   }
 };
 
-
-
-// const register = async (req, res) => {
-//   const {lastName,firstName,birthday, phone,email, password} = req.body;
-
-//   try {
-//     const result = await insert({lastName,firstName,birthday,phone,email, password });
-//     res.status(201).json({ id: result.insertId, lastName,firstName,birthday,phone,email,password });
-//   } catch (err) {
-//     console.error(err);
-//     res.status(500).send({
-//       error: err.message,
-//     });
-//   }
-// };
-
 const login = async (req, res) => {
   const { email, password } = req.body;
 
@@ -136,7 +120,6 @@ const sendResetPassword = async (req, res, next) => {
     res.status(401).send({
       error: "Invalid email",
     });
-    // console.log(user);
   }else{
     try {
         const resetToken = jwt.sign({ email }, process.env.JWT_AUTH_SECRET);
@@ -146,10 +129,7 @@ const sendResetPassword = async (req, res, next) => {
     } catch (error) {
         next(error);
     }
-
   }
-
-
 }
 
 const resetPassword = async (req, res, next) => {
