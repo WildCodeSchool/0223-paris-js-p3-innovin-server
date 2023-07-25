@@ -9,6 +9,7 @@ const {
   deleteSessionById,
   getUserSessionsBySessionId,
   findSessionByUserId,
+  createUserHasSession,
 } = require("./model");
 
 const getAllWithNumberOfParticipants = ({ req, res }) => {
@@ -31,7 +32,9 @@ const getById = (req, res) => {
   const { id } = req.params;
   findById(id)
     .then(([session]) => {
-      !session ? res.status(400).json("ressource with the specified id do not exist") : res.status(200).json(session);
+      !session
+        ? res.status(400).json("ressource with the specified id do not exist")
+        : res.status(200).json(session);
     })
     .catch((err) => console.error(err));
 };
@@ -100,6 +103,15 @@ const postNewSession = async (req, res) => {
   }
 };
 
+const postUserHasSession = async (req, res) => {
+  try {
+    const newUserHasSession = await createUserHasSession(req.body);
+    res.status(200).json(newUserHasSession);
+  } catch (error) {
+    res.status(500).json("erreur serveur");
+  }
+};
+
 const deleteSession = async (req, res) => {
   const { id } = req.params;
   try {
@@ -140,4 +152,5 @@ module.exports = {
   getSessionByUserId,
   deleteUserFromSession,
   deleteWineFromSession,
+  postUserHasSession,
 };

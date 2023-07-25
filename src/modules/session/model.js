@@ -56,6 +56,14 @@ const createNewSession = (session) => {
   );
 };
 
+const createUserHasSession = (data) => {
+  const { sessionId, userId } = data;
+  return db.execute(
+    "INSERT INTO session_has_user (user_id, session_id) VALUES (?, ?)",
+    [userId, sessionId]
+  );
+};
+
 const deleteSessionById = (id) => {
   return db.execute("DELETE FROM session WHERE id = ?", [id]);
 };
@@ -98,4 +106,5 @@ module.exports = {
   findSessionByUserId,
   deleteUserFromSessionById,
   deleteWineFromSessionById,
+  createUserHasSession,
 };

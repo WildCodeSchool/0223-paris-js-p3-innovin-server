@@ -10,6 +10,25 @@ const getRecipeByUserId = async (req, res) => {
     }
   }
 
+const getAll = ({ req, res }) => {
+  findAll()
+    .then(([recipes]) => {
+      res.status(200).json(recipes);
+    })
+    .catch((err) => console.error(err));
+};
+
+const getAllBySession = (req, res) => {
+  const { id } = req.params;
+  findAllBySessionId(id)
+    .then(([recipes]) => {
+      !recipes
+        ? res.status(400).json("ressource with the specified id does not exist")
+        : res.status(200).json(recipes);
+    })
+    .catch((err) => console.error(err));
+};
+
   const getById = (req, res) => {
     const { id } = req.params;
     findRecipeByRecipeId(id)
@@ -43,10 +62,13 @@ const getRecipeByUserId = async (req, res) => {
       .catch((err) => console.error(err));
   };
 
-  module.exports = {
-    getRecipeByUserId,
-    getById,
-    createOne,
-    getRecipeByUserAndSessionId
-  };
   
+module.exports = {
+  createOne,
+  getAll,
+  getById,
+  getAllBySession,
+  getById,
+  getRecipeByUserId,
+  getRecipeByUserAndSessionId
+}
