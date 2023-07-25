@@ -60,7 +60,8 @@ CREATE TABLE IF NOT EXISTS `mydb`.`user` (
   `lastname` VARCHAR(45) NOT NULL,
   `email` VARCHAR(45) NOT NULL UNIQUE,
   `password` VARCHAR(255) NOT NULL,
-  `age` INT NOT NULL,
+  `birthday` DATETIME DEFAULT NULL,
+  `phone` INT DEFAULT NULL,
   `role` enum('ROLE_ADMIN','ROLE_USER') NOT NULL DEFAULT 'ROLE_USER',
   `comment` TEXT DEFAULT NULL,
   PRIMARY KEY (`id`))
@@ -152,13 +153,13 @@ DEFAULT CHARACTER SET = utf8mb3;
 -- -----------------------------------------------------
 -- Table mydb.tag
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS mydb.tag (
-  id INT NOT NULL AUTO_INCREMENT,
-  type_of_tag VARCHAR(45) NOT NULL,
-  category VARCHAR(45) NOT NULL,
-  sub_category VARCHAR(100) NULL,
-  name VARCHAR(100) NOT NULL,
-  PRIMARY KEY (id))
+CREATE TABLE IF NOT EXISTS `mydb`.`tag` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `type_of_tag` VARCHAR(45) NOT NULL,
+  `category` VARCHAR(45) NOT NULL,
+  `sub_category` VARCHAR(100) NULL,  
+  `name` VARCHAR(100) NOT NULL,
+  PRIMARY KEY (`id`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb3;
 
