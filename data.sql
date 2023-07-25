@@ -29,14 +29,7 @@ INSERT INTO mydb.`user` (firstname,lastname,email, password, role) VALUES
 
 
 INSERT INTO
-	mydb.`session` (
-		category,
-		`date`,
-		price,
-		max_participants,
-		location_id
-	)
-VALUES
+	mydb.`session` (category,`date`, price, max_participants,location_id) VALUES
 	('Dégustation', '2023-08-01 16:00:00', 40, 10, 3),
 	('Dégustation', '2023-08-03 16:00:00', 40, 10, 5),
 	('Dégustation', '2023-08-05 14:00:00', 40, 10, 5),
@@ -101,8 +94,7 @@ VALUES
 	(4, 2);
 
 INSERT INTO
-	mydb.session_has_wine (wine_id, session_id)
-VALUES
+	mydb.session_has_wine (wine_id, session_id) VALUES
 	(1, 1),
 	(2, 1),
 	(3, 1),
@@ -114,6 +106,7 @@ VALUES
 	(5, 1),
 	(5, 2);
 
+<<<<<<< HEAD
 INSERT INTO mydb.tag (type_of_tag,category,sub_category,name) VALUES
      ('User','Couleur',NULL,'Vin Rouge'),
      ('User','Couleur',NULL,'Virn Blanc'),
@@ -246,21 +239,15 @@ VALUES
 	(3, 5),
 	(5, 5);
 
-INSERT INTO
-	mydb.recipe (
-		user_id,
-		session_id,
-		won_contest,
-		selected_for_context
-	)
-VALUES
+
+INSERT INTO mydb.recipe (user_id,session_id,won_contest,selected_for_context) VALUES
 	(1, 2, 0, 1),
 	(2, 2, 1, 1),
 	(4, 2, 0, 1);
 
+
 INSERT INTO
-	mydb.mix_wine (recipe_id, wine_id, percent_wine)
-VALUES
+	mydb.mix_wine (recipe_id, wine_id, percent_wine) VALUES
 	(1, 1, 70),
 	(1, 2, 15),
 	(1, 3, 15),
@@ -284,6 +271,7 @@ VALUES
 	(3, 2, 2, 3),
 	(4, 2, 2, 10),
 	(5, 2, 2, 4);
+
 
 INSERT INTO
 	mydb.note_has_tag (note_id, tag_id)
