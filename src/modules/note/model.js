@@ -11,14 +11,6 @@ const findNotesByUserAndSessionId = (sessionId, userId) => {
     });
 };
 
-const AddOne = (userId, sessionId) => {
-  return db.execute(`insert recipe (user_id, session_id) values (?, ?)`, [
-    userId,
-    sessionId,
-  ]);
-};
-
 module.exports = {
   findNotesByUserAndSessionId,
-  AddOne,
 };
