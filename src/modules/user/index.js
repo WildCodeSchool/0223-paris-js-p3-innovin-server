@@ -11,6 +11,7 @@ const {
   updateUser,
   updateComment,
   deleteUser,
+  sendContact,
   getCurrentUser,sendResetPassword, resetPassword
 } = require("./controller");
 const {
@@ -29,6 +30,7 @@ router.post("/login", login);
 
 router.post("/sendResetPassword", sendResetPassword);
 router.post("/resetPassword", resetPassword);
+router.post("/contact", sendContact);
 
 router.put("/:id", authenticate, updateUser);
 router.put("/comment", authenticate, updateComment);

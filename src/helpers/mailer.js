@@ -12,7 +12,7 @@ const transporter = mailer.createTransport({
 
 const sendResetPasswordMail = async ({ dest, url }) => {
     const mailOptions = {
-        from: "ceci.brams@gmail.com", // this is the address from which the email will be sent
+        from: "", // this is the address from which the email will be sent
         to: dest, // this is the address to which the email will be sent
         subject: "Reset your password",
         text: `Use this link to reset your password : ${url}`, // url will be defined later in our controller
@@ -21,6 +21,18 @@ const sendResetPasswordMail = async ({ dest, url }) => {
     return transporter.sendMail(mailOptions);
 };
 
+
+const sendYourmessage = async ({ firstName, email, subject , message}) => {
+    const mailOptions = {        
+        from: email, // this is the address from which the email will be sent
+        to: "ceci.brams@gmail.com", // this is the address to which the email will be sent
+        subject: subject,
+        text: `${firstName} send you a message : ${message}`, // url will be defined later in our controller
+    };
+    return transporter.sendMail(mailOptions);
+};
+
+
 module.exports = {
-    sendResetPasswordMail,
+    sendResetPasswordMail,sendYourmessage
 };

@@ -32,7 +32,6 @@ const postByIdTag = async (req, res)=>{
   }
 }
 
-
 const getAllWinesTags = (req, res) => {
   findAllWinesTags()
   .then(([tags]) => {
