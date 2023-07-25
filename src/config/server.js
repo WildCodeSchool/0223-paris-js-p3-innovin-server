@@ -20,6 +20,7 @@ const user_rooter = require("../modules/user");
 const wine_rooter = require("../modules/wine");
 const location_rooter = require("../modules/location");
 const note_rooter = require("../modules/note");
+const creation_rooter = require("../modules/creation");
 
 
 app.use("/recipes", recipe_rooter);
@@ -29,5 +30,7 @@ app.use("/users", user_rooter);
 app.use("/wines", wine_rooter);
 app.use("/locations", location_rooter);
 app.use("/notes", note_rooter);
+app.use("/creations", creation_rooter);
+
 
 module.exports = app;

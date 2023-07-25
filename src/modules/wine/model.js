@@ -9,7 +9,7 @@ const findAll = () => {
   const findById = (id) => {
     return db
       .execute(
-        "SELECT * FROM wine WHERE wine.id = ? ",
+        "SELECT wine.name as wine_name, region.name as region_name, wine.image as wine_img, cepage, color, comment, domain, manufacture_year, appellation FROM wine JOIN region ON region.id = wine.region_id WHERE wine.id = ? ",
         [id]
       )
       .then((data) => {
