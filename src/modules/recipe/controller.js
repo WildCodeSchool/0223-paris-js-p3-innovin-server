@@ -1,4 +1,4 @@
-const { findRecipeByUserId, findRecipeByRecipeId, AddOne, findRecipeByUserAndSessionId } = require("./model");
+const { findRecipeByUserId, findRecipeByRecipeId, AddOne, findRecipeByUserAndSessionId, findAllBySessionId } = require("./model");
 
 const getRecipeByUserId = async (req, res) => {
     try {

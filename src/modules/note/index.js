@@ -9,7 +9,6 @@ router.get("/:id", authenticate, getNotesByUserAndSessionId);
 
 
 router.post("/noteHasTag", authenticate, addNoteHasTag);
-
 router.post("/:id", authenticate, addNote);
 
 
