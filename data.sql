@@ -28,14 +28,7 @@ INSERT INTO mydb.`user` (firstname,lastname,email, password, role) VALUES
 	 ('Thomas','Te','lonjon.thomas@gmail.com','$argon2id$v=19$m=65536,t=3,p=4$8iGCr2Bkx5pnsMzSkG3o8w$elbVXhunIGEVS8XewsCy/SvFce7zDxxbq14fLkMZpo0','ROLE_USER');
 
 INSERT INTO
-	mydb.`session` (
-		category,
-		`date`,
-		price,
-		max_participants,
-		location_id
-	)
-VALUES
+	mydb.`session` (category,`date`, price, max_participants,location_id) VALUES
 	('Dégustation', '2023-08-01 16:00:00', 40, 10, 3),
 	('Dégustation', '2023-08-03 16:00:00', 40, 10, 5),
 	('Dégustation', '2023-08-05 14:00:00', 40, 10, 5),
@@ -99,8 +92,7 @@ VALUES
 	(4, 2);
 
 INSERT INTO
-	mydb.session_has_wine (wine_id, session_id)
-VALUES
+	mydb.session_has_wine (wine_id, session_id) VALUES
 	(1, 1),
 	(2, 1),
 	(3, 1),
@@ -112,70 +104,14 @@ VALUES
 	(5, 1),
 	(5, 2);
 
-INSERT INTO
-	mydb.tag (type_of_tag, category, name)
-VALUES
-	('User', 'Bouche', 'Vieu Bandage'),
-	('User', 'Bouche', 'Charnu'),
-	('User', 'Bouche', 'Fruité'),
-	('User', 'Nez', 'Grillé'),
-	('User', 'Nez', 'Epicé'),
-	('User', 'Nez', 'Acide'),
-	('User', 'Oeil', 'Profond'),
-	('User', 'Oeil', 'Clair'),
-	('User', 'Oeil', 'Intense'),
-	('Wine', 'Bouche', 'Rond'),
-	('Wine', 'Bouche', 'Sucré'),
-	('Wine', 'Bouche', 'Bouchoné'),
-	('Wine', 'Nez', 'Enivrant'),
-	('Wine', 'Nez', 'Terreux'),
-	('Wine', 'Nez', 'Floral'),
-	('Wine', 'Oeil', 'Grenat'),
-	('Wine', 'Oeil', 'Framboise'),
-	('Wine', 'Oeil', 'Rubis'),
-	('Wine', 'Oeil', 'Doré');
-
-INSERT INTO
-	mydb.user_has_tag (user_id, tag_id)
-VALUES
-
-INSERT INTO
-	mydb.user_has_favorite (user_id, wine_id)
-VALUES
-	(1, 1),
-	(2, 1),
-	(3, 1),
-	(5, 1),
-	(1, 2),
-	(3, 2),
-	(4, 2),
-	(5, 2),
-	(1, 3),
-	(3, 3),
-	(4, 3),
-	(5, 3),
-	(2, 4),
-	(4, 4),
-	(5, 4),
-	(2, 5),
-	(3, 5),
-	(5, 5);
-
-INSERT INTO
-	mydb.recipe (
-		user_id,
-		session_id,
-		won_contest,
-		selected_for_context
-	)
-VALUES
+INSERT INTO mydb.recipe (user_id,session_id,won_contest,selected_for_context) VALUES
 	(1, 2, 0, 1),
 	(2, 2, 1, 1),
 	(4, 2, 0, 1);
 
+
 INSERT INTO
-	mydb.mix_wine (recipe_id, wine_id, percent_wine)
-VALUES
+	mydb.mix_wine (recipe_id, wine_id, percent_wine) VALUES
 	(1, 1, 70),
 	(1, 2, 15),
 	(1, 3, 15),
@@ -186,30 +122,20 @@ VALUES
 	(3, 2, 15),
 	(3, 3, 15);
 
-INSERT INTO
-	mydb.note (wine_id, user_id, session_id, note)
-VALUES
-	(1, 1, 2, 10),
-	(2, 1, 2, 9),
-	(3, 1, 2, 8),
-	(4, 1, 2, 5),
-	(5, 1, 2, 7),
-	(1, 2, 2, 5),
-	(2, 2, 2, 1),
-	(3, 2, 2, 3),
-	(4, 2, 2, 10),
-	(5, 2, 2, 4);
-INSERT INTO mydb.session_has_wine (wine_id,session_id) VALUES
-	 (1,1),
-	 (2,1),
-	 (3,1),
-	 (4,1),
-	 (1,2),
-	 (2,2),
-	 (3,2),
-	 (4,2),
-     (5,1),
-     (5,2);
+
+INSERT INTO mydb.note (wine_id,user_id,session_id,note) VALUES
+	 (1,1,2,10),
+	 (2,1,2,9),
+	 (3,1,2,8),
+	 (4,1,2,5),
+	 (5,1,2,7),
+	 (1,2,2,5),
+	 (2,2,2,1),
+	 (3,2,2,3),
+	 (4,2,2,10),
+	 (5,2,2,4);
+
+
 
 
 INSERT INTO mydb.tag (type_of_tag,category,sub_category,name) VALUES
@@ -341,54 +267,9 @@ INSERT INTO mydb.user_has_favorite (user_id,wine_id) VALUES
 	 (3,5),
 	 (5,5);
 
-INSERT INTO mydb.recipe (user_id,session_id,won_contest,selected_for_context) VALUES
-	 (1,2,0,1),
-	 (2,2,1,1);
 
 
-INSERT INTO mydb.mix_wine (recipe_id,wine_id,percent_wine) VALUES
-	 (1,1,70),
-	 (1,2,15),
-	 (1,3,15),
-	 (2,1,10),
-	 (2,4,70),
-	 (2,5,20);
 
-
-INSERT INTO mydb.note (wine_id,user_id,session_id,note) VALUES
-	 (1,1,2,10),
-	 (2,1,2,9),
-	 (3,1,2,8),
-	 (4,1,2,5),
-	 (5,1,2,7),
-	 (1,2,2,5),
-	 (2,2,2,1),
-	 (3,2,2,3),
-	 (4,2,2,10),
-	 (5,2,2,4);
-
-
-INSERT INTO mydb.note_has_tag (note_id,tag_id) VALUES
-	 (1,10),
-	 (10,10),
-	 (1,11),
-	 (9,11),
-	 (10,11),
-	 (2,12),
-	 (9,12),
-	 (2,13),
-	 (8,13),
-	 (3,14),
-	 (8,14),
-	 (3,15),
-	 (7,15),
-	 (4,16),
-	 (7,16),
-	 (4,17),
-	 (6,17),
-	 (5,18),
-	 (6,18),
-	 (5,19);
 
 INSERT INTO
 	mydb.note_has_tag (note_id, tag_id)
