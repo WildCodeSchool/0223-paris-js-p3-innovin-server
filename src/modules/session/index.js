@@ -20,6 +20,7 @@ const {
 const { authenticate } = require("../../middlewares/auth");
 
 router.get("/", getAllWithNumberOfParticipants);
+router.get("/all", getAll);
 router.get("/user", authenticate, getSessionByUserId);
 router.get("/:id", getByIdWithNumberOfParticipants);
 router.get("/:id/wine", getWineBySessionId);
