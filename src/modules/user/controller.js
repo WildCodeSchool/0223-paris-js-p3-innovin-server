@@ -11,9 +11,9 @@ const {
   updateOneComment,
   deleteOne,
   findCurrent,
-} = require("./model");
+ } = require("./model");
 
-const {sendResetPasswordMail} = require("../../helpers/mailer.js")
+const {sendResetPasswordMail, sendYourmessage} = require("../../helpers/mailer.js")
 
 const getAll = ({ req, res }) => {
   findAll()
@@ -192,6 +192,17 @@ const deleteUser = (req, res) => {
     });
 };
 
+
+const sendContact = async (req, res, next) => {
+  const {firstName, email, subject , message } = req.body;
+    try {
+        await sendYourmessage({ firstName, email, subject , message});
+        res.sendStatus(200);
+    } catch (error) {
+        next(error);
+    }
+  }
+
 module.exports = {
   getAll,
   getById,
@@ -203,5 +214,6 @@ module.exports = {
   deleteUser,
   getCurrentUser,
   sendResetPassword, 
-  resetPassword
+  resetPassword,
+  sendContact
 };

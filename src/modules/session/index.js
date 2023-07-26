@@ -12,18 +12,22 @@ const {
   deleteUserFromSession,
   deleteWineFromSession,
   postUserHasSession,
+  postWineHasSession,
+  getAllWithNumberOfParticipants,
+  getByIdWithNumberOfParticipants,
 } = require("./controller");
 
 const { authenticate } = require("../../middlewares/auth");
 
-router.get("/", getAll);
+router.get("/", getAllWithNumberOfParticipants);
 router.get("/user", authenticate, getSessionByUserId);
-router.get("/:id", getById);
+router.get("/:id", getByIdWithNumberOfParticipants);
 router.get("/:id/wine", getWineBySessionId);
 router.get("/:id/user", getUserBySessionId);
 
 router.post("/", postNewSession);
 router.post("/userhassession", postUserHasSession);
+router.post("/winehassession", postWineHasSession);
 router.post("/:id/register", authenticate, addRegistration);
 
 router.delete("/:id", deleteSession);
