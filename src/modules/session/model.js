@@ -2,7 +2,9 @@ const db = require("../../config/db-config");
 
 const findAll = () => {
   return db
-    .execute("SELECT *, session.id FROM session JOIN location ON session.location_id=location.id")
+    .execute(
+      "SELECT *, session.id FROM session JOIN location ON session.location_id=location.id ORDER BY session.date ASC"
+    )
     .then((data) => {
       return data;
     });
@@ -58,10 +60,7 @@ const createNewSession = (session) => {
 
 const createUserHasSession = (data) => {
   const { sessionId, userId } = data;
-  return db.execute(
-    "INSERT INTO session_has_user (user_id, session_id) VALUES (?, ?)",
-    [userId, sessionId]
-  );
+  return db.execute("INSERT INTO session_has_user (user_id, session_id) VALUES (?, ?)", [userId, sessionId]);
 };
 
 const deleteSessionById = (id) => {
