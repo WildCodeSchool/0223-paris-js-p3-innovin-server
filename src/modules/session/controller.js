@@ -8,6 +8,8 @@ const {
   findAllWithNumberOfParticipants,
   findByIdWithNumberOfParticipants,
   deleteSessionById,
+  deleteUserFromSessionById,
+  deleteWineFromSessionById,
   getUserSessionsBySessionId,
   findSessionByUserId,
   createUserHasSession,

@@ -4,6 +4,8 @@ const {
   findFavoritesByUserId,
   deleteOneFav,
   AddOneToFav,
+  deleteOne,
+  updateOne,
 } = require("./model");
 
 const getAll = ({ req, res }) => {
@@ -51,7 +53,7 @@ const AddToFav = async (req, res) => {
   const { id } = req.params;
   try {
     const result = await AddOneToFav(req.userId, id);
-    res.status(201).json({ user : req.userId, wine : id });
+    res.status(201).json({ user: req.userId, wine: id });
   } catch (error) {
     console.error(error);
     res.status(500).send({
@@ -60,10 +62,36 @@ const AddToFav = async (req, res) => {
   }
 };
 
+const deleteWine = (req, res) => {
+  const { id } = req.params;
+  deleteOne(id)
+    .then((result) => {
+      res.status(204).json(result);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json("error server");
+    });
+};
+
+const updateWine = (req, res) => {
+  const { wine } = req.body;
+  updateOne(wine)
+    .then((result) => {
+      res.status(204).json(result);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json("error server");
+    });
+};
+
 module.exports = {
   getAll,
   getById,
   getFavByUserId,
   deleteFav,
   AddToFav,
+  deleteWine,
+  updateWine,
 };
