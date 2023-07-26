@@ -4,7 +4,7 @@ INSERT INTO
 		color,
 		manufacture_year,
 		`domain`,
-		region,
+		region_id,
 		appellation,
 		cepage,
 		image,
@@ -12,33 +12,11 @@ INSERT INTO
 	)
 VALUES
 	(
-		'Blanc de Blanc',
-		'Blanc',
-		'1979',
-		'Ruinart',
-		'Champagne',
-		'Champagne',
-		'Muscat',
-		'http://localhost:8080/imgwine/whitebottle.png',
-		'Robe pâle reflets verts. Nez franc et typé, de la finesse. Bon équilibre, assez plein, franc et fruité. Finale sapide.'
-	),
-	(
-		'Chablis',
-		'Blanc',
-		'2021',
-		'Domaine de Vauroux',
-		'Bourgogne',
-		'Petit Chablis',
-		'Chardonnay',
-		'http://localhost:8080/imgwine/whitebottle2.png',
-		'Robe jaune pâle reflets or. Nez ouvert sur des notes de caramel beurre salé, de chocolat blanc, de vanille, pointe de fumé et de pierre à fusil. Attaque ciselée, franche, belle finesse, de la tension, de la fraicheur. Bon équilibre. Caractère sur le pain grillé, les épices, et des notes fumées. Finale sapide, croquante, sur le citron vert et le sel marin.'
-	),
-	(
 		'La fiole du Pape',
 		'Rouge',
 		'2004',
 		'Maison Brotte',
-		'Rhône',
+		'7',
 		'Côtes du Rhône',
 		'Cinsault',
 		'http://localhost:8080/imgwine/redbottle.png',
@@ -49,7 +27,7 @@ VALUES
 		'Rouge',
 		'1995',
 		'Chateau La Louvière',
-		'Bordeaux',
+		'4',
 		'Pauillac',
 		'Pinot noir',
 		'http://localhost:8080/imgwine/redbottle2.png',
@@ -60,7 +38,7 @@ VALUES
 		'Blanc',
 		'1920',
 		'Domaine de la Motte',
-		'Alsace',
+		'1',
 		'Crémant d’Alsace',
 		'Pinot blanc',
 		'http://localhost:8080/imgwine/whitebottle3.png',
@@ -71,7 +49,7 @@ VALUES
 		'Rouge',
 		'2016',
 		'Château Corbin',
-		'Bordeaux',
+		'4',
 		'Saint Emilion',
 		'Merlot, Cabernet Franc, Cabernet Sauvignon',
 		'http://localhost:8080/imgwine/redbottle3.png',
@@ -82,7 +60,7 @@ VALUES
 		'Rouge',
 		'2018',
 		'Château Rahoul',
-		'Bordeaux',
+		'4',
 		'Graves',
 		'Merlot, Petit Verdot, Cabernet Sauvignon',
 		'http://localhost:8080/imgwine/redbottle.png',
@@ -93,7 +71,7 @@ VALUES
 		'Rouge',
 		'2018',
 		'Château Magnol',
-		'Bordeaux',
+		'4',
 		'Haut Medoc',
 		'Merlot, Cabernet Franc, Petit Verdot, Cabernet Sauvignon',
 		'http://localhost:8080/imgwine/redbottle2.png',
@@ -104,7 +82,7 @@ VALUES
 		'Rouge',
 		'2020',
 		'Jean Loron',
-		'Bourgogne',
+		'5',
 		'Bourgogne',
 		'Gamay',
 		'http://localhost:8080/imgwine/redbottle3.png',
@@ -115,7 +93,7 @@ VALUES
 		'Rouge',
 		'2018',
 		'Côte de Beaune Village',
-		'Bourgogne',
+		'5',
 		'Côte de Beaune Village',
 		'Pinot Noir',
 		'http://localhost:8080/imgwine/redbottle.png',
@@ -126,7 +104,7 @@ VALUES
 		'Rouge',
 		'2020',
 		'Jacques Charlet',
-		'Beaujolais',
+		'3',
 		'Chiroubles',
 		'Gamay',
 		'http://localhost:8080/imgwine/redbottle2.png',
@@ -137,7 +115,7 @@ VALUES
 		'Rouge',
 		'2020',
 		'Jean Loron',
-		'Beaujolais',
+		'3',
 		'Côte de Brouilly',
 		'Gamay',
 		'http://localhost:8080/imgwine/redbottle3.png',
@@ -148,7 +126,7 @@ VALUES
 		'Blanc',
 		'2022',
 		'Berticot',
-		'Sud-Ouest',
+		'15',
 		'Côtes de Duras',
 		'Sauvignon',
 		'http://localhost:8080/imgwine/whitebottle.png',
@@ -159,7 +137,7 @@ VALUES
 		'Blanc',
 		'2021',
 		'A Casetta Corse',
-		'Méditerranée',
+		'6',
 		'Vin De Corse',
 		'Vermentinu',
 		'http://localhost:8080/imgwine/whitebottle.png',
@@ -170,7 +148,7 @@ VALUES
 		'Blanc',
 		'2020',
 		'Lionel Osmin & Cie',
-		'Sud-Ouest',
+		'15',
 		'Jurançon Sec',
 		'Gros Manseng, Petit manseng',
 		'http://localhost:8080/imgwine/whitebottle2.png',
@@ -181,7 +159,7 @@ VALUES
 		'Blanc',
 		'2022',
 		'Les petites récoltes',
-		'Languedoc-Roussillon',
+		'9',
 		'IGP Côteaux De Peyriac',
 		'Chardonnay, Marsanne',
 		'http://localhost:8080/imgwine/whitebottle3.png',
@@ -192,7 +170,7 @@ VALUES
 		'Blanc',
 		'2022',
 		'Château La Noë',
-		'Loire et Centre',
+		'10',
 		'Muscadet',
 		'Melon de Bourgogne',
 		'http://localhost:8080/imgwine/whitebottle.png',
@@ -203,7 +181,7 @@ VALUES
 		'Blanc',
 		'2021',
 		'Château Haut Rian',
-		'Bordeaux',
+		'4',
 		'Entre Deux Mers',
 		'Sauvignon blanc, Sémillon',
 		'http://localhost:8080/imgwine/whitebottle2.png',
@@ -214,7 +192,7 @@ VALUES
 		'Blanc',
 		'2020',
 		'Château Couhins',
-		'Bordeaux',
+		'4',
 		'Pessac Léognan',
 		'Sauvignon',
 		'http://localhost:8080/imgwine/whitebottle3.png',
@@ -225,7 +203,7 @@ VALUES
 		'Blanc',
 		'2018',
 		'Château Bouscaut',
-		'Bordeaux',
+		'4',
 		'Pessac Léognan',
 		'Sauvignon, Sémillon',
 		'http://localhost:8080/imgwine/whitebottle.png',
@@ -236,7 +214,7 @@ VALUES
 		'Rouge',
 		'2013',
 		'Château Olivier',
-		'Bordeaux',
+		'4',
 		'Pessac Léognan',
 		'Merlot, Petit Verdot, Cabernet Sauvignon',
 		'http://localhost:8080/imgwine/redbottle.png',
@@ -244,60 +222,42 @@ VALUES
 	);
 
 INSERT INTO
-	mydb.`user` (
-		firstname,
-		lastname,
-		email,
-		password,
-		age,
-		`role`,
-		comment
-	)
+	mydb.`user` (firstname, lastname, email, password, role)
 VALUES
 	(
 		'Celia',
 		'Golden',
 		'ceci.brams@gmail.com',
 		'$argon2id$v=19$m=65536,t=3,p=4$oKINUTSPrDaQKKNBnI3xuA$wz0ebKYpLsWWWYOUuw58jmrXKl7lMmlJGYHhNqZTJMM',
-		21,
-		'ROLE_USER',
-		NULL
+		'ROLE_USER'
 	),
 	(
 		'Saverio',
 		'Platinium',
 		'save.cutolo@gmail.com',
 		'$argon2id$v=19$m=65536,t=3,p=4$0kcgVUGnvv+FiSkqoWY1fg$3h3mUp4tjJJJmgPL57vjHIlN7wAOJcihSyjHHp4eICg',
-		28,
-		'ROLE_USER',
-		NULL
+		'ROLE_USER'
 	),
 	(
 		'JM',
 		'Guirlande',
 		'millet.jm@live.com',
 		'$argon2id$v=19$m=65536,t=3,p=4$jFoy3cUueXp0P/8huFOoVw$dN6Zk+sfhZTEPwiB8BiSx4OTAwVYEQ7jYhnfyw95xlU',
-		23,
-		'ROLE_ADMIN',
-		NULL
+		'ROLE_USER'
 	),
 	(
 		'Tom',
 		'Nana',
 		'lelaurain.tom@gmail.com',
 		'$argon2id$v=19$m=65536,t=3,p=4$t67zhRKcXGLqJ3p9KO5f5Q$q4RFIN4d02J76sr6HWh/bXmIjryzO6M7qLvLyxkANn8',
-		23,
-		'ROLE_USER',
-		NULL
+		'ROLE_USER'
 	),
 	(
 		'Thomas',
 		'Te',
 		'lonjon.thomas@gmail.com',
 		'$argon2id$v=19$m=65536,t=3,p=4$8iGCr2Bkx5pnsMzSkG3o8w$elbVXhunIGEVS8XewsCy/SvFce7zDxxbq14fLkMZpo0',
-		28,
-		'ROLE_USER',
-		NULL
+		'ROLE_USER'
 	);
 
 INSERT INTO
@@ -438,10 +398,49 @@ VALUES
 	(5, 2);
 
 INSERT INTO
+	mydb.recipe (
+		user_id,
+		session_id,
+		won_contest,
+		selected_for_context
+	)
+VALUES
+	(1, 2, 0, 1),
+	(2, 2, 1, 1),
+	(4, 2, 0, 1);
+
+INSERT INTO
+	mydb.mix_wine (recipe_id, wine_id, percent_wine)
+VALUES
+	(1, 1, 70),
+	(1, 2, 15),
+	(1, 3, 15),
+	(2, 1, 10),
+	(2, 4, 70),
+	(2, 5, 20),
+	(3, 1, 70),
+	(3, 2, 15),
+	(3, 3, 15);
+
+INSERT INTO
+	mydb.note (wine_id, user_id, session_id, note)
+VALUES
+	(1, 1, 2, 10),
+	(2, 1, 2, 9),
+	(3, 1, 2, 8),
+	(4, 1, 2, 5),
+	(5, 1, 2, 7),
+	(1, 2, 2, 5),
+	(2, 2, 2, 1),
+	(3, 2, 2, 3),
+	(4, 2, 2, 10),
+	(5, 2, 2, 4);
+
+INSERT INTO
 	mydb.tag (type_of_tag, category, sub_category, name)
 VALUES
 	('User', 'Couleur', NULL, 'Vin Rouge'),
-	('User', 'Couleur', NULL, 'Virn Blanc'),
+	('User', 'Couleur', NULL, 'Vin Blanc'),
 	('User', 'Arôme', NULL, 'Fruité'),
 	('User', 'Arôme', NULL, 'Floral'),
 	('User', 'Arôme', NULL, 'Végétal'),
@@ -672,45 +671,6 @@ VALUES
 	(5, 5);
 
 INSERT INTO
-	mydb.recipe (
-		user_id,
-		session_id,
-		won_contest,
-		selected_for_context
-	)
-VALUES
-	(1, 2, 0, 1),
-	(2, 2, 1, 1),
-	(4, 2, 0, 1);
-
-INSERT INTO
-	mydb.mix_wine (recipe_id, wine_id, percent_wine)
-VALUES
-	(1, 1, 70),
-	(1, 2, 15),
-	(1, 3, 15),
-	(2, 1, 10),
-	(2, 4, 70),
-	(2, 5, 20),
-	(3, 1, 70),
-	(3, 2, 15),
-	(3, 3, 15);
-
-INSERT INTO
-	mydb.note (wine_id, user_id, session_id, note)
-VALUES
-	(1, 1, 2, 10),
-	(2, 1, 2, 9),
-	(3, 1, 2, 8),
-	(4, 1, 2, 5),
-	(5, 1, 2, 7),
-	(1, 2, 2, 5),
-	(2, 2, 2, 1),
-	(3, 2, 2, 3),
-	(4, 2, 2, 10),
-	(5, 2, 2, 4);
-
-INSERT INTO
 	mydb.note_has_tag (note_id, tag_id)
 VALUES
 	(1, 10),
@@ -733,3 +693,239 @@ VALUES
 	(5, 18),
 	(6, 18),
 	(5, 19);
+
+INSERT INTO
+	mydb.region (name, description, image)
+VALUES
+	(
+		'Alsace',
+		'Entre les Vosges et le Rhin, l''Alsace produit des vins emblématiques. Son climat semi-continental et ses sols granitiques et calcaires confèrent aux vins un caractère unique, et se distinguent par leur fraîcheur et leur finesse',
+		'http://localhost:8080/regions/alsace.jpeg'
+	),
+	(
+		'Auvergne',
+		'Les vignobles de l''Auvergne se nichent au cœur de paysages volcaniques. Les sols volcaniques riches, combinés à un climat frais, donnent naissance à des vins à la personnalité unique.',
+		'http://localhost:8080/regions/auvergne.jpeg'
+	),
+	(
+		'Beaujolais',
+		'Le Beaujolais, situé au nord de Lyon, est célèbre pour ses vins légers et fruités. Les vignobles couvrent les collines granitiques de la région, où le cépage Gamay règne en maître. Les vins se distinguent par leurs arômes de fruits rouges frais et leur souplesse en bouche.',
+		'http://localhost:8080/regions/beaujolais.jpeg'
+	),
+	(
+		'Bordelais',
+		'Le Bordelais, terre des Grands Crus, est renommé dans le monde entier pour ses vins de qualité. Les vignobles s''étendent des rives de la Garonne aux plateaux calcaires. Le climat océanique favorise la maturation des raisins et confère aux vins une structure élégante et des arômes complexes.',
+		'http://localhost:8080/regions/bordeaux.jpeg'
+	),
+	(
+		'Bourgogne',
+		'La Bourgogne est le berceau de certains des vins les plus réputés au monde. Les vignobles s''étendent sur des collines calcaires, divisés en parcelles d''appellations prestigieuses. Les cépages Pinot Noir et Chardonnay dominent et caractérisent les vins bourguignons.',
+		'http://localhost:8080/regions/bourgogne.jpeg'
+	),
+	(
+		'Corse',
+		'La Corse, île méditerranéenne ensoleillée, produit des vins à l''identité marquée. Les vignobles s''épanouissent sur des terrasses en pente et des sols schisteux. Les vins corses se distinguent par leurs arômes de fruits mûrs, de maquis et d''agrumes, offrant une belle expression du terroir insulaire.',
+		'http://localhost:8080/regions/corse.jpg'
+	),
+	(
+		'Côte-du-Rhône',
+		'La Côte du Rhône est réputée pour sa diversité et son terroir exceptionnel. Les vignobles s''étendent des coteaux pentus aux plaines fertiles. Les vins de la Côte du Rhône se distinguent par leurs arômes de fruits noirs, d''épices et de garrigue, reflétant l''expression du terroir et la passion des vignerons.',
+		'http://localhost:8080/regions/rhone.jpeg'
+	),
+	(
+		'Jura',
+		'Le Jura, région montagneuse à l''est de la France, est connu pour ses vins originaux et singuliers. Les vignobles sont situés sur des coteaux escarpés, bénéficiant d''un climat continental. Le Jura est également réputé pour son vin jaune, un vin oxydatif, et son vin de paille, élaboré à partir de raisins passerillés.',
+		'http://localhost:8080/regions/jura.jpeg'
+	),
+	(
+		'Languedoc',
+		'Le Languedoc est la plus grande région viticole de France, réputée pour sa diversité et son climat méditerranéen. Les vignobles s''étendent des contreforts des Cévennes aux plaines ensoleillées. Les vins du Languedoc reflètent l''identité généreuse et ensoleillée de la région.',
+		'http://localhost:8080/regions/languedoc.jpg'
+	),
+	(
+		'Loire',
+		'La Loire, fleuve majestueux, est une région viticole variée et riche en patrimoine. Les vignobles s''étendent le long de la Loire et de ses affluents. Les vins de la Loire offrent une grande diversité d''arômes, allant des fruits frais aux agrumes, en passant par les fleurs blanches',
+		'http://localhost:8080/regions/loire.jpeg'
+	),
+	(
+		'Lorraine',
+		'La Lorraine, terre de paysages verdoyants et de douceur de vivre, abrite des vignobles aux caractères bien trempés. Entre les coteaux des Côtes de Toul et les rives de la Moselle, les vignes s''épanouissent, offrant des vins rouges et blancs qui révèlent des arômes de fruits rouges, de mirabelle et de notes minérales.',
+		'http://localhost:8080/regions/lorraine.jpeg'
+	),
+	(
+		'Provence',
+		'La Provence, terre ensoleillée et empreinte de douceur de vivre, est mondialement reconnue pour ses vins aux couleurs chatoyantes. Les vignobles s''étendent des collines de la Sainte-Victoire aux coteaux du Var, baignés par la chaleur méditerranéenne. Les vins de Provence évoquent la douceur de vivre, les terrasses ensoleillées et les couchers de soleil scintillants.',
+		'http://localhost:8080/regions/provence.jpeg'
+	),
+	(
+		'Roussillon',
+		'Le Roussillon, région située entre les Pyrénées et la Méditerranée, est un véritable joyau viticole. Les vignobles s''étendent sur des terroirs variés, allant des coteaux arides aux vallées verdoyantes. Les vins du Roussillon, riches et puissants, révèlent la générosité de ce terroir méditerranéen.',
+		'http://localhost:8080/regions/roussillon.jpeg'
+	),
+	(
+		'Savoie',
+		'La Savoie, nichée entre les sommets majestueux des Alpes, offre des vins d''altitude d''une grande finesse. Les vignobles s''épanouissent sur des coteaux escarpés, exposés aux vents frais des montagnes. Les vins de Savoie, d''une fraîcheur remarquable, révèlent des arômes de fleurs alpines, de fruits croquants et de minéralité, évoquant les paysages pittoresques et les sentiers de randonnée.',
+		'http://localhost:8080/regions/savoie.jpeg'
+	),
+	(
+		'Sud-Ouest',
+		'Le Sud-Ouest de la France est une région viticole riche en diversité et en traditions. Des vallées verdoyantes de la Garonne aux collines vallonnées du Tarn, les vignobles s''épanouissent dans un climat favorable. Les vins du Sud-Ouest incarnent l''authenticité et la convivialité, témoignant de l''identité régionale et de la passion des vignerons.',
+		'http://localhost:8080/regions/sud_ouest.jpeg'
+	);
+
+INSERT INTO
+	mydb.cepage (color, name)
+VALUES
+	('red', 'Pinot-noir'),
+	('red', 'Gamay-noir'),
+	('red', 'Merlot'),
+	('red', 'Cabernet-Sauvignon'),
+	('red', 'Cabernet-Franc'),
+	('red', 'Petit-Verdot'),
+	('red', 'Malbec'),
+	('red', 'Cinsaut'),
+	('red', 'Carignan-noir'),
+	('red', 'Nielluccio'),
+	('red', 'Grenache-noir'),
+	('red', 'Poulsard'),
+	('red', 'Trousseau'),
+	('red', 'Syrah-noir'),
+	('red', 'Meunier'),
+	('red', 'Grolleau'),
+	('red', 'Tibouren'),
+	('red', 'Mourvèdre-noir'),
+	('red', 'Mondeuse'),
+	('red', 'Jurançon-noir'),
+	('red', 'Fer-Servadou'),
+	('red', 'Abouriou'),
+	('red', 'Tannat'),
+	('white', 'Riesling'),
+	('white', 'Sylvaner'),
+	('white', 'Pinot-blanc'),
+	('white', 'Gewurztraminer'),
+	('white', 'Auxerrois'),
+	('white', 'Pinot-Gris'),
+	('white', 'Chardonnay'),
+	('white', 'Sémilion'),
+	('white', 'Ugni-blanc'),
+	('white', 'Sauvignon'),
+	('white', 'Muscadelle'),
+	('white', 'Aligoté'),
+	('white', 'Vermentino'),
+	('white', 'Muscat-blanc'),
+	('white', 'Grenache-blanc'),
+	('white', 'Macabeu'),
+	('white', 'Picpoul'),
+	('white', 'Roussanne'),
+	('white', 'Marsanne'),
+	('white', 'Gamay'),
+	('white', 'Melon de Bourgone'),
+	('white', 'Chenin'),
+	('white', 'Folle Blanche (Gros Plant)'),
+	('white', 'Clairette'),
+	('white', 'Roussette'),
+	('white', 'Jacquère'),
+	('white', 'Gros Manseng'),
+	('white', 'Colombard');
+
+INSERT INTO
+	mydb.region_has_cepage (region_id, cepage_id)
+VALUES
+	('1', '1'),
+	('1', '24'),
+	('1', '25'),
+	('1', '26'),
+	('1', '27'),
+	('1', '28'),
+	('1', '29'),
+	('2', '2'),
+	('2', '1'),
+	('2', '30'),
+	('3', '2'),
+	('3', '30'),
+	('4', '3'),
+	('4', '4'),
+	('4', '5'),
+	('4', '6'),
+	('4', '7'),
+	('4', '31'),
+	('4', '32'),
+	('4', '33'),
+	('4', '34'),
+	('5', '1'),
+	('5', '30'),
+	('5', '35'),
+	('6', '8'),
+	('6', '9'),
+	('6', '10'),
+	('6', '11'),
+	('6', '36'),
+	('6', '37'),
+	('6', '38'),
+	('6', '30'),
+	('7', '14'),
+	('7', '9'),
+	('7', '41'),
+	('7', '42'),
+	('8', '12'),
+	('8', '13'),
+	('8', '1'),
+	('8', '30'),
+	('8', '33'),
+	('9', '9'),
+	('9', '11'),
+	('9', '8'),
+	('9', '14'),
+	('9', '38'),
+	('9', '39'),
+	('9', '30'),
+	('9', '40'),
+	('9', '41'),
+	('9', '42'),
+	('10', '5'),
+	('10', '2'),
+	('10', '16'),
+	('10', '44'),
+	('10', '45'),
+	('10', '33'),
+	('10', '46'),
+	('11', '1'),
+	('11', '15'),
+	('11', '30'),
+	('11', '26'),
+	('11', '29'),
+	('11', '35'),
+	('11', '28'),
+	('11', '43'),
+	('12', '11'),
+	('12', '9'),
+	('12', '8'),
+	('12', '17'),
+	('12', '32'),
+	('12', '47'),
+	('12', '36'),
+	('13', '9'),
+	('13', '11'),
+	('13', '14'),
+	('13', '18'),
+	('13', '38'),
+	('14', '2'),
+	('14', '19'),
+	('14', '1'),
+	('14', '48'),
+	('14', '30'),
+	('14', '35'),
+	('14', '49'),
+	('15', '3'),
+	('15', '7'),
+	('15', '4'),
+	('15', '5'),
+	('15', '20'),
+	('15', '21'),
+	('15', '22'),
+	('15', '23'),
+	('15', '32'),
+	('15', '50'),
+	('15', '33'),
+	('15', '34'),
+	('15', '51');

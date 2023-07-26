@@ -27,12 +27,15 @@ CREATE TABLE IF NOT EXISTS `mydb`.`wine` (
   `color` VARCHAR(45) NOT NULL,
   `manufacture_year` VARCHAR(45) NOT NULL,
   `domain` VARCHAR(100) NOT NULL,
-  `region` VARCHAR(100) NOT NULL,
+  `region_id` INT NOT NULL,
   `appellation` VARCHAR(100) NOT NULL,
   `cepage` VARCHAR(255) NOT NULL,
   `image` VARCHAR(255) NOT NULL,
   `comment` TEXT NULL,
-  PRIMARY KEY (`id`))
+  PRIMARY KEY (`id`),
+   CONSTRAINT `fk_region_1`
+    FOREIGN KEY (`region_id`)
+    REFERENCES `mydb`.`region` (`id`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb3;
 
@@ -60,7 +63,8 @@ CREATE TABLE IF NOT EXISTS `mydb`.`user` (
   `lastname` VARCHAR(45) NOT NULL,
   `email` VARCHAR(45) NOT NULL UNIQUE,
   `password` VARCHAR(255) NOT NULL,
-  `age` INT NOT NULL,
+  `birthday` DATETIME DEFAULT NULL,
+  `phone` INT DEFAULT NULL,
   `role` enum('ROLE_ADMIN','ROLE_USER') NOT NULL DEFAULT 'ROLE_USER',
   `comment` TEXT DEFAULT NULL,
   PRIMARY KEY (`id`))
@@ -150,17 +154,18 @@ DEFAULT CHARACTER SET = utf8mb3;
 
 
 -- -----------------------------------------------------
--- Table mydb.tag
+-- Table `mydb`.`tag`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS mydb.tag (
-  id INT NOT NULL AUTO_INCREMENT,
-  type_of_tag VARCHAR(45) NOT NULL,
-  category VARCHAR(45) NOT NULL,
-  sub_category VARCHAR(100) NULL,
-  name VARCHAR(100) NOT NULL,
-  PRIMARY KEY (id))
+CREATE TABLE IF NOT EXISTS `mydb`.`tag` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `type_of_tag` VARCHAR(45) NOT NULL,
+  `category` VARCHAR(45) NOT NULL,
+  `sub_category` VARCHAR(100) NULL,  
+  `name` VARCHAR(100) NOT NULL,
+  PRIMARY KEY (`id`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb3;
+
 
 -- -----------------------------------------------------
 -- Table `mydb`.`note_has_tag`
@@ -247,3 +252,43 @@ ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb3;
 
 
+-- -----------------------------------------------------
+-- Table `mydb`.`region`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb`.`region` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(200) NOT NULL,
+  `description` TEXT NOT NULL,
+  `image` TEXT NOT NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb3;
+
+
+-- -----------------------------------------------------
+-- Table `mydb`.`cepage`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb`.`cepage` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `color` enum('red','white') NOT NULL,
+  `name` VARCHAR(200) NOT NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb3;
+
+
+-- -----------------------------------------------------
+-- Table `mydb`.`region_has_cepage`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb`.`region_has_cepage` (
+  `region_id` INT NOT NULL,
+  `cepage_id` INT NOT NULL,
+  PRIMARY KEY (`region_id`, `cepage_id`),
+  CONSTRAINT `fk_region_has_cepage_region1`
+    FOREIGN KEY (`region_id`)
+    REFERENCES `mydb`.`region` (`id`),
+  CONSTRAINT `fk_region_has_cepage_cepage1`
+    FOREIGN KEY (`cepage_id`)
+    REFERENCES `mydb`.`cepage` (`id`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb3;

@@ -39,6 +39,7 @@ const isAdmin = (req, res, next) => {
   }
 };
 
+
 module.exports = {
   hashPassword,
   authenticate,
