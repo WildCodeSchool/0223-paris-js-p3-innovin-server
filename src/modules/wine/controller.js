@@ -76,6 +76,7 @@ const deleteWine = (req, res) => {
 
 const updateWine = (req, res) => {
   const { wine } = req.body;
+  console.log(wine);
   updateOne(wine)
     .then((result) => {
       res.status(204).json(result);

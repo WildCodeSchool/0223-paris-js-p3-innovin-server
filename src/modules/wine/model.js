@@ -9,7 +9,7 @@ const findAll = () => {
 const findById = (id) => {
   return db
     .execute(
-      "SELECT wine.name as wine_name, region.name as region_name, wine.image as wine_img, cepage, color, comment, domain, manufacture_year, appellation FROM wine JOIN region ON region.id = wine.region_id WHERE wine.id = ? ",
+      "SELECT wine.id as id, wine.name as wine_name, region.name as region_name, region_id, wine.image as wine_img, cepage, color, comment, domain, manufacture_year, appellation FROM wine JOIN region ON region.id = wine.region_id WHERE wine.id = ? ",
       [id]
     )
     .then((data) => {
@@ -56,7 +56,7 @@ const updateOne = async (wine) => {
     color,
     manufacture_year,
     domain,
-    region,
+    region_id,
     appellation,
     cepage,
     image,
@@ -64,13 +64,13 @@ const updateOne = async (wine) => {
     id,
   } = wine;
   const [result] = await db.execute(
-    "UPDATE wine SET name = ?, color = ?, manufacture_year = ?, `domain` = ?, region = ?, appellation = ?,  cepage = ? , image = ?, comment = ? WHERE id = ?",
+    "UPDATE wine SET name = ?, color = ?, manufacture_year = ?, `domain` = ?, region_id = ?, appellation = ?,  cepage = ? , image = ?, comment = ? WHERE id = ?",
     [
       name,
       color,
       manufacture_year,
       domain,
-      region,
+      region_id,
       appellation,
       cepage,
       image,
